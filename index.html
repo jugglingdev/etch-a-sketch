@@ -20,14 +20,23 @@
     </section>
     
     <section class="buttons">
-        <div class="color-picker"></div>
-        <button>Color Mode</button>
-        <button>Rainbow Mode</button>
-        <button>Lighten</button>
-        <button>Darken</button>
-        <button>Eraser</button>
-        <button>Clear</button>
-        <div class="slider"></div>
+        <div id="colorPicker" class="color-picker">
+            <!--circle that opens to color picker; circle is color of selected color-->
+        </div>
+        <button id="color" class="fill">Color Mode</button>
+        <button id="rainbow" class="fill">Rainbow Mode</button>
+        <button id="lighten" class="fill">Lighten</button>
+        <button id="darken" class="fill">Darken</button>
+        <button id="eraser" class="fill">Eraser</button>
+        <button id="clear" class="fill">Clear</button>
+        <div id="slider" class="slider">
+            <!--thin line with moving circle button-->
+            <div class="slider-line">            
+                <button class="slider-selector"></button>
+                <span>16 X 16</span>
+            </div>
+
+        </div>
     </section>
 
     <footer>
