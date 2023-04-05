@@ -1,51 +1,61 @@
-// Function to makeGrid
+let grid = document.getElementById('grid');
+let slider = document.getElementById('slider');
+let gridSize = document.getElementById('gridSize');
+    gridSize.innerHTML = slider.value + ' X ' + slider.value;
 
-const sketchContainer = document.querySelector('.sketch-container');
+const colorMode = document.getElementById('color');
+const rainbowMode = document.getElementById('rainbow');
+const lighten = document.getElementById('lighten');
+const darken = document.getElementById('darken');
+const eraser = document.getElementById('eraser');
+const clear = document.getElementById('clear');
+const gridLines = document.getElementById('gridLines');
 
-function makeGrid(rows, cols) {
-    sketchContainer.style.setProperty('--grid-rows', rows);
-    sketchContainer.style.setProperty('--grid-cols', cols);
-    for (let i = 0; i < rows * cols; i++) {
-        let cell = document.createElement('div');
-        cell.classList.add('cell');
-        cell.classList.add('gridlines');
-        sketchContainer.appendChild(cell);
-    }
+gridLines.onclick = () => showGridLines();
+slider.onmousemove = (e) => updateSizeValue(e.target.value);
+slider.onchange = (e) => changeSize(e.target.value);
+
+
+let currentSize = 16;
+
+function setCurrentSize(newSize) {
+    currentSize = newSize;
 }
 
-makeGrid(16, 16);
-
-// Function to remove gridlines
-
-//cell.classList.remove('gridlines');
-//toggle gridlines on and off
-
-//Functions to use color and rainbow buttons
-
-const colorMode = document.getElementById('#color');
-const rainbowMode = document.getElementById('#rainbow');
-const lighten = document.getElementById('#lighten');
-const darken = document.getElementById('#darken');
-const eraser = document.getElementById('#eraser');
-const clear = document.getElementById('#clear');
-
-let color = cell.style.backgroundColor
-
-function changeColor(newColor) {
-    cell.style.backgroundColor = newColor;
+function changeSize(value) {
+    setCurrentSize(value);
+    updateSizeValue(value);
+    resetGrid();
+  }
+  
+function updateSizeValue(value) {
+    gridSize.innerHTML = `${value} x ${value}`;
 }
 
-colorMode.addEventListener('click', changeColor);
+function resetGrid() {
+    clearGrid();
+    makeGrid(currentSize);
+}
 
+function clearGrid() {
+    grid.innerHTML = '';
+}
 
+function makeGrid(gridSize) {
+    grid.style.setProperty('--gridSize', gridSize);
+    
+    for (let i = 0; i < (gridSize * gridSize); i++) {
+        let gridItem = document.createElement('div');
+        gridItem.classList.add('grid-item');
+        grid.appendChild(gridItem);
+    };
+}
 
+function showGridLines() {
+    let gridItem = document.getElementsByClassName('grid-item');
+    gridItem.classList.add('grid-lines');
+}
 
-
-/*
-https://www.joshwcomeau.com/ (buttons, shadows)
-
-https://iro.js.org/
-https://www.cssscript.com/swatch-color-picker/
-downloaded swatchy color picker
-https://www.youtube.com/watch?v=eIw-Nou9L9E
-*/
+window.onload = () => {
+    makeGrid(gridSize);
+}
