@@ -11,22 +11,32 @@ const eraser = document.getElementById('eraser');
 const clear = document.getElementById('clear');
 const gridLines = document.getElementById('gridLines');
 
-gridLines.onclick = () => showGridLines();
+gridLines.onclick = () => showHideGridLines();
 slider.onmousemove = (e) => updateSizeValue(e.target.value);
 slider.onchange = (e) => changeSize(e.target.value);
 
+// Grid Line Functions
+
+
+function showHideGridLines() {
+    document.querySelectorAll('.grid-item').forEach(
+       el => el.classList.toggle('grid-lines')
+    );
+}
+
+// Grid Size Functions
 
 let currentSize = 16;
-
-function setCurrentSize(newSize) {
-    currentSize = newSize;
-}
 
 function changeSize(value) {
     setCurrentSize(value);
     updateSizeValue(value);
     resetGrid();
   }
+
+function setCurrentSize(newSize) {
+    currentSize = newSize;
+}
   
 function updateSizeValue(value) {
     gridSize.innerHTML = `${value} x ${value}`;
@@ -41,21 +51,27 @@ function clearGrid() {
     grid.innerHTML = '';
 }
 
-function makeGrid(gridSize) {
-    grid.style.setProperty('--gridSize', gridSize);
+function makeGrid(currentSize) {
+    grid.style.setProperty('--gridSize', currentSize);
     
-    for (let i = 0; i < (gridSize * gridSize); i++) {
+    for (let i = 0; i < (currentSize * currentSize); i++) {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
+
         grid.appendChild(gridItem);
+
     };
+
+
+ 
+
+
 }
 
-function showGridLines() {
-    let gridItem = document.getElementsByClassName('grid-item');
-    gridItem.classList.add('grid-lines');
-}
+
+
+    
 
 window.onload = () => {
-    makeGrid(gridSize);
+    makeGrid(currentSize);
 }
