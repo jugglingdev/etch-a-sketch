@@ -94,43 +94,60 @@ function darkenColor(e, [h, s, l]) {
     e.target.style.backgroundColor = `hsl(${h}, ${s}%, ${newLightness}%)`;
 }
 
-    // Show Grid Lines mode
-    // Hide Grid Lines mode
-
 // Active Button Functions
 
 function makeButtonActive(newMode) {
-    if (currentMode == 'color') {
-        colorMode.classList.remove('.active');
-    } else if (currentMode == 'rainbow') {
-        rainbowMode.classList.remove('.active');
-    } else if (currentMode == 'lighten') {
-        lighten.classList.remove('.active');
-    } else if (currentMode == 'darken') {
-        darken.classList.remove('.active');
-    } else if (currentMode == 'eraser') {
-        eraser.classList.remove('.active');
+    if (newMode == 'color') {
+        rainbowMode.classList.remove('active');
+        lighten.classList.remove('active');
+        darken.classList.remove('active');
+        eraser.classList.remove('active');
+    } else if (newMode == 'rainbow') {
+        colorMode.classList.remove('active');
+        lighten.classList.remove('active');
+        darken.classList.remove('active');
+        eraser.classList.remove('active');
+    } else if (newMode == 'lighten') {
+        colorMode.classList.remove('active');
+        rainbowMode.classList.remove('active');
+        darken.classList.remove('active');
+        eraser.classList.remove('active');
+    } else if (newMode == 'darken') {
+        colorMode.classList.remove('active');
+        rainbowMode.classList.remove('active');
+        lighten.classList.remove('active');
+        eraser.classList.remove('active');
+    } else if (newMode == 'eraser') {
+        colorMode.classList.remove('active');
+        rainbowMode.classList.remove('active');
+        lighten.classList.remove('active');
+        darken.classList.remove('active');
     }
 
     if (newMode == 'color') {
-        colorMode.classList.add('.active');
+        colorMode.classList.add('active');
     } else if (newMode == 'rainbow') {
-        rainbowMode.classList.add('.active');
+        rainbowMode.classList.add('active');
     } else if (newMode == 'lighten') {
-        lighten.classList.add('.active');
+        lighten.classList.add('active');
     } else if (newMode == 'darken') {
-        darken.classList.add('.active');
+        darken.classList.add('active');
     } else if (newMode == 'eraser') {
-        eraser.classList.add('.active');
+        eraser.classList.add('active');
     }
 }
 
-    // Color, Rainbow, Lighten, Darken, or Eraser
-    // Clear as single click
-    // Grid Lines toggle on/off
-
-
 // Grid Line Functions
+
+let gridLinesMode = 'hideGridLines';
+
+function makeGridLinesBtnActive(gridLinesMode) {
+    if (gridLinesMode == 'hideGridLines') {
+        gridLines.classList.remove('active');
+    } else if (gridLinesMode == 'showGridLines') {
+    gridLines.classList.add('active');
+    }
+}
 
 function showHideGridLines() {
     document.querySelectorAll('.grid-item').forEach(
@@ -181,6 +198,8 @@ function makeGrid(currentSize) {
 
 window.onload = () => {
     makeGrid(currentSize);
+    makeButtonActive(currentMode);
+    makeGridLinesBtnActive(gridLinesMode);
 }
 
 

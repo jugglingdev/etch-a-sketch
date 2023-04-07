@@ -109,7 +109,19 @@ button:focus {
     transform: scale(1.05);
 }
 
-button.active:active {
+button.active {
+    box-shadow: none;
+    background-color: var(--darkGray);
+    color: white;
+    outline-offset: 4px; /* for focus state */
+    transform: scale(1.0);
+}
+
+.clear:focus {
+    transform: scale(1.0);
+}
+
+.clear:active {
     box-shadow: none;
     background-color: var(--darkGray);
     color: white;
