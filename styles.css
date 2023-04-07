@@ -104,6 +104,19 @@ button {
     user-select: none;
 }
 
+button:hover,
+button:focus {
+    transform: scale(1.05);
+}
+
+button.active:active {
+    box-shadow: none;
+    background-color: var(--darkGray);
+    color: white;
+    outline-offset: 4px; /* for focus state */
+    transform: scale(1.0);
+}
+
 .slider-container {
     width: 100%;
 }
@@ -146,14 +159,6 @@ button {
 
 .gridsize {
     text-align: center;
-}
-
-.fill:hover,
-.fill:focus,
-.fill:active {
-    box-shadow: none;
-    background-color: var(--darkGray);
-    color: white;
 }
 
 footer {

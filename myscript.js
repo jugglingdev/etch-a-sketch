@@ -23,7 +23,7 @@ gridLines.onclick = () => showHideGridLines();
 slider.onmousemove = (e) => updateSizeValue(e.target.value);
 slider.onchange = (e) => changeSize(e.target.value);
 
-// Functions to Set Modes
+// Functions to Set Modes (color, rainbow, lighten, darken, eraser)
 
 let currentMode = 'color';
 let currentColor = 'hsl(0, 0%, 20%)';
@@ -44,26 +44,55 @@ function sketch(e) {
     } else if (currentMode == 'rainbow') {
         let randomHue = Math.floor(Math.random() * 361);
         e.target.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
-    } else if (currentMode == 'lighten') {
-        let gridItemColor = e.target.getPropertyValue('backgroundColor');
-        let [hue, saturation, lightness] = gridItemColor.match(/\d+/g).map(Number);
-        let newLightness = Math.max(0, Math.min(100, lightness + parseFloat(10)));
-        e.target.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${newLightness}%)`;
-        console.log(gridItemColor);
-    } else if (currentMode == 'darken') {
-        let gridItemColor = e.target.getPropertyValue('backgroundColor');
-        let [hue, saturation, lightness] = gridItemColor.match(/\d+/g).map(Number);
-        let newDarkness = Math.max(0, Math.min(100, lightness + parseFloat(-10)));
-        e.target.style.backgroundColor = `hsl(${hue}, ${saturation}%, ${newDarkness}%)`;
     } else if (currentMode == 'eraser') {
-        e.target.style.backgroundColor = 'hsl(0, 0%, 100%)';
+        e.target.style.backgroundColor = 'rgb(255, 255, 255)';
+    } else if (currentMode == 'lighten' || 'darken') {
+        let gridItemColor = window.getComputedStyle(e.target).backgroundColor;
+        let gridItemColorRGB = gridItemColor.match(/\d+/g).map(Number);
+        rgbToHsl(e, gridItemColorRGB);
     }
-
-
-    console.log(currentMode);
 }
 
+function rgbToHsl(e, [r, g, b]) {
+    r /= 255; g /= 255; b /= 255;
+    let max = Math.max(r, g, b);
+    let min = Math.min(r, g, b);
+    let d = max - min;
+    let h;
 
+    if (d === 0) {
+        h = 0;
+    } else if (max === r) {
+        h = (g - b) / d % 6;
+    } else if (max === g) {
+        h = (b - r) / d + 2;
+    } else if (max === b) {
+        h = (r - g) / d + 4;
+    }
+
+    let l = (min + max) / 2;
+    let s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));
+    h *= 60;
+    s *= 100;
+    l *= 100;
+
+    if (currentMode == 'lighten') {
+        lightenColor(e, [h, s, l]);
+    } else if (currentMode == 'darken') {
+        darkenColor(e, [h, s, l]);
+    }
+    return [h, s, l];
+}
+
+function lightenColor(e, [h, s, l]) {
+    let newLightness = Math.max(0, Math.min(100, l + 10));
+    e.target.style.backgroundColor = `hsl(${h}, ${s}%, ${newLightness}%)`;
+}
+
+function darkenColor(e, [h, s, l]) {
+    let newLightness = Math.max(0, Math.min(100, l - 10));
+    e.target.style.backgroundColor = `hsl(${h}, ${s}%, ${newLightness}%)`;
+}
 
     // Show Grid Lines mode
     // Hide Grid Lines mode
@@ -100,14 +129,6 @@ function makeButtonActive(newMode) {
     // Clear as single click
     // Grid Lines toggle on/off
 
-// Color Functions
-
-    // Color Picker
-    // Rainbow
-    // Lighten
-    // Darken
-    // Eraser
-    // Clear??? (right now using function clearGrid())
 
 // Grid Line Functions
 
@@ -157,8 +178,6 @@ function makeGrid(currentSize) {
 }
 
 
-
-    
 
 window.onload = () => {
     makeGrid(currentSize);
