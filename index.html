@@ -16,32 +16,28 @@
         <h1>Etch A Sketch</h1>
     </header>
 
-    <section class="sketch-container">
+    <section id="grid" class="grid">
     </section>
     
     <section class="buttons">
-        <div id="colorPicker" class="color-picker">
-            <!--circle that opens to color picker; circle is color of selected color-->
+        <input id="colorPicker" class="color-picker" type='color' value="#333333">
+        <button id="color" class="active">Color Mode</button>
+        <button id="rainbow">Rainbow Mode</button>
+        <button id="lighten">Lighten</button>
+        <button id="darken">Darken</button>
+        <button id="eraser">Eraser</button>
+        <button id="clear" class="clear">Clear</button>
+        <button id="gridLines">Grid Lines</button>
+        <div class="slider-container">
+            <input type="range" min="1" max="100" value="16" class="slider" id="slider">
+            <div class="gridsize" id="gridSize"></div>
         </div>
-        <button id="color" class="fill">Color Mode</button>
-        <button id="rainbow" class="fill">Rainbow Mode</button>
-        <button id="lighten" class="fill">Lighten</button>
-        <button id="darken" class="fill">Darken</button>
-        <button id="eraser" class="fill">Eraser</button>
-        <button id="clear" class="fill">Clear</button>
-        <div id="slider" class="slider">
-            <!--thin line with moving circle button-->
-            <div class="slider-line">            
-                <button class="slider-selector"></button>
-                <span>16 X 16</span>
-            </div>
 
-        </div>
     </section>
 
     <footer>
         <p>Thanks for playing!</p>
-        <p>Copyright &copy; 2023 <a href="https://github.com/jugglingdev/" target="_blank">jugglingdev <img src="./github-mark/github-mark-white.svg" alt="GitHub social icon"></a></p>
+        <p>Copyright &copy; 2023 <a href="https://github.com/jugglingdev/" target="_blank">jugglingdev <img src="./images/github-mark/github-mark-white.svg" alt="GitHub social icon"></a></p>
     </footer>
 </body>
 </html>

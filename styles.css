@@ -49,7 +49,7 @@ h1 {
     border: none;
     padding: 0;
     user-select: none;
-    cursor: url(./paintbrush-cursor.png) 16 16, auto;
+    cursor: url(./images/paintbrush-cursor.png) 16 16, auto;
 }
 
 .grid-lines {
@@ -59,6 +59,7 @@ h1 {
 input[type='color'] {
     transition: transform 0.1s ease-in-out;
     -webkit-appearance: none;
+    -moz-appearance: none;
     width: 80px;
     height: 80px;
     border: none;
@@ -75,14 +76,22 @@ input[type='color']::-webkit-color-swatch {
     box-shadow: none;
 }
 
+input[type='color']::-moz-color-swatch {
+    border: none;
+    border-radius: 50px;
+    box-shadow: none;
+}
+
 input[type='color']:hover {
     transform: scale(1.05);
     cursor: pointer;
+    background-color: white;
 }
 
 input[type='color']:active {
     transition: transform 0.25s ease-in-out;
     transform: scale(1);
+    background-color: white;
 }
 
 .buttons {
@@ -228,7 +237,18 @@ footer img {
 
     button {
         width: 80%;
+        color: var(--darkGray);
     }
+
+    .slider-container,
+    .slider {
+        width: 100%;
+    }
+
+    .gridsize {
+        text-align: center;
+    }
+
 }
 
 @media only screen and (min-width: 426px) {
