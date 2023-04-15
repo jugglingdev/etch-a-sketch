@@ -19,7 +19,7 @@ lighten.onclick = () => setCurrentMode('lighten');
 darken.onclick = () => setCurrentMode('darken');
 eraser.onclick = () => setCurrentMode('eraser');
 clear.onclick = () => resetGrid();
-gridLines.onclick = () => showHideGridLines();
+gridLines.onclick = () => makeGridLinesBtnActive();
 slider.onmousemove = (e) => updateSizeValue(e.target.value);
 slider.onchange = (e) => changeSize(e.target.value);
 
@@ -139,21 +139,45 @@ function makeButtonActive(newMode) {
 
 // Grid Line Functions
 
-let gridLinesMode = 'hideGridLines';
+let currentGridLineMode = 'hide';
 
-function makeGridLinesBtnActive(gridLinesMode) {
-    if (gridLinesMode == 'hideGridLines') {
-        gridLines.classList.remove('active');
-    } else if (gridLinesMode == 'showGridLines') {
-    gridLines.classList.add('active');
+function setCurrentGridLineMode(newGridLineMode) {
+    currentGridLineMode = newGridLineMode;
+    makeButtonActive(newGridLineMode);
+}
+
+function showHideGridLines(e) {
+
+    
+    document.querySelectorAll('.grid-item').forEach(el => el.classList.toggle('active'));
+    
+    /*
+    if (gridLines.classList.contains('active')) {
+        document.querySelectorAll('.grid-item').forEach(el => el.classList.toggle('active'));
+    } else {
+        document.querySelectorAll('.grid-item').forEach(el => el.classList.remove('active'));
     }
+    */
+    
 }
 
-function showHideGridLines() {
-    document.querySelectorAll('.grid-item').forEach(
-       el => el.classList.toggle('grid-lines')
-    );
+//let gridItem = document.getElementsByClassName('grid-item');
+
+function makeGridLinesBtnActive() {
+    gridLines.classList.toggle('active');
+    showHideGridLines(e);
+
+    /*
+    if (currentGridLineMode == 'hide') {
+        gridLines.classList.add('active');
+        currentGridLineMode = 'show';
+    } else if (currentGridLineMode == 'show') {
+        gridLines.classList.remove('active');
+        currentGridLineMode = 'hide';
+    };
+    */
 }
+
 
 // Grid Size Functions
 
@@ -199,7 +223,7 @@ function makeGrid(currentSize) {
 window.onload = () => {
     makeGrid(currentSize);
     makeButtonActive(currentMode);
-    makeGridLinesBtnActive(gridLinesMode);
+    makeGridLinesBtnActive();
 }
 
 

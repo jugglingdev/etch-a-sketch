@@ -129,11 +129,13 @@ button.active {
     transform: scale(1.0);
 }
 
-.clear:focus {
+.clear:focus,
+.grid-lines:focus {
     transform: scale(1.0);
 }
 
-.clear:hover {
+.clear:hover,
+.grid-lines:hover {
     transform: scale(1.05);
 }
 
