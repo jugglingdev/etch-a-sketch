@@ -139,45 +139,18 @@ function makeButtonActive(newMode) {
 
 // Grid Line Functions
 
-let currentGridLineMode = 'hide';
-
-function setCurrentGridLineMode(newGridLineMode) {
-    currentGridLineMode = newGridLineMode;
-    makeButtonActive(newGridLineMode);
-}
-
-function showHideGridLines(e) {
-
-    
-    document.querySelectorAll('.grid-item').forEach(el => el.classList.toggle('active'));
-    
-    /*
+function showHideGridLines() {
     if (gridLines.classList.contains('active')) {
-        document.querySelectorAll('.grid-item').forEach(el => el.classList.toggle('active'));
+        document.querySelectorAll('.grid-item').forEach(el => el.classList.add('grid-lines'));
     } else {
-        document.querySelectorAll('.grid-item').forEach(el => el.classList.remove('active'));
-    }
-    */
-    
+        document.querySelectorAll('.grid-item').forEach(el => el.classList.remove('grid-lines'));
+    }    
 }
-
-//let gridItem = document.getElementsByClassName('grid-item');
 
 function makeGridLinesBtnActive() {
     gridLines.classList.toggle('active');
-    showHideGridLines(e);
-
-    /*
-    if (currentGridLineMode == 'hide') {
-        gridLines.classList.add('active');
-        currentGridLineMode = 'show';
-    } else if (currentGridLineMode == 'show') {
-        gridLines.classList.remove('active');
-        currentGridLineMode = 'hide';
-    };
-    */
+    showHideGridLines();
 }
-
 
 // Grid Size Functions
 
@@ -216,9 +189,9 @@ function makeGrid(currentSize) {
         gridItem.addEventListener('mousedown', sketch);
         grid.appendChild(gridItem);
     };
+
+    showHideGridLines();
 }
-
-
 
 window.onload = () => {
     makeGrid(currentSize);
