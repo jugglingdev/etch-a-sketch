@@ -149,6 +149,11 @@ button.active {
 
 .slider-container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .slider {
@@ -242,7 +247,10 @@ footer img {
         color: var(--darkGray);
     }
 
-    .slider-container,
+    .slider-container {
+        width: 100%;
+    }
+
     .slider {
         width: 80%;
     }
