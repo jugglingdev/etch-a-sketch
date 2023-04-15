@@ -23,6 +23,10 @@ gridLines.onclick = () => makeGridLinesBtnActive();
 slider.onmousemove = (e) => updateSizeValue(e.target.value);
 slider.onchange = (e) => changeSize(e.target.value);
 
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+
 // Functions to Set Modes (color, rainbow, lighten, darken, eraser)
 
 let currentMode = 'color';
@@ -39,7 +43,7 @@ function setCurrentColor(newColor) {
 }
 
 function sketch(e) {
-    if (e.type == 'mouseover' && !'mousedown' ) return;
+    if (e.type == 'mouseover' && !mouseDown) return;
     if (currentMode == 'color') {
         e.target.style.backgroundColor = currentColor;
     } else if (currentMode == 'rainbow') {
