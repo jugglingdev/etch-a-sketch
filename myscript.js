@@ -203,12 +203,3 @@ window.onload = () => {
     makeButtonActive(currentMode);
     makeGridLinesBtnActive();
 }
-
-
-/*
-https://www.joshwcomeau.com/ (buttons, shadows)
-
-https://iro.js.org/
-
-https://www.youtube.com/watch?v=eIw-Nou9L9E
-*/
