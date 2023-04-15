@@ -35,6 +35,7 @@ function setCurrentMode(newMode) {
 
 function setCurrentColor(newColor) {
     currentColor = newColor;
+    setCurrentMode('color');
 }
 
 function sketch(e) {
