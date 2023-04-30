@@ -1,7 +1,7 @@
 const grid = document.getElementById('grid');
 const slider = document.getElementById('slider');
 const gridSize = document.getElementById('gridSize');
-    gridSize.innerHTML = slider.value + ' X ' + slider.value;
+      gridSize.innerHTML = slider.value + ' X ' + slider.value;
 
 const colorPicker = document.getElementById('colorPicker');
 const colorMode = document.getElementById('color');
@@ -23,9 +23,19 @@ gridLines.onclick = () => makeGridLinesBtnActive();
 slider.onmousemove = (e) => updateSizeValue(e.target.value);
 slider.onchange = (e) => changeSize(e.target.value);
 
+// Limit sketch() to work with mousedown && mouseover; not hover alone
+
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
+
+// Function for touch events
+
+grid.addEventListener('touchmove', function(e) {
+    let touch = e.touches[0];
+    gridItem = document.elementFromPoint(touch.clientX, touch.clientY);
+    sketch(e);
+})
 
 // Functions to Set Modes (color, rainbow, lighten, darken, eraser)
 
@@ -190,8 +200,8 @@ function makeGrid(currentSize) {
     for (let i = 0; i < (currentSize * currentSize); i++) {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
-        gridItem.addEventListener('mouseover', sketch);
         gridItem.addEventListener('mousedown', sketch);
+        gridItem.addEventListener('mouseover', sketch);
         grid.appendChild(gridItem);
     };
 
