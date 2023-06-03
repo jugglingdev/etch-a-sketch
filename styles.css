@@ -196,6 +196,25 @@ button.active {
     text-align: center;
 }
 
+.return-home {
+    margin-top: 48px;
+}
+
+.CTA {
+    font-size: 32px;
+    padding: 12px;
+}
+
+.go-to-gallery a button,
+.return-home a button {
+    font-family: 'Lobster', serif;
+    font-size: 32px;
+}
+
+.go-to-gallery {
+    margin-top: 0;
+}
+
 footer {
     width: 100%;
     padding-top: 40px;
@@ -308,7 +327,6 @@ footer img {
     aspect-ratio: 1 / 1;
     max-width: 540px;
     padding: 20px;
-
 }
 
 .carousel-slide img {
@@ -367,11 +385,6 @@ footer img {
     height: 100%;
     object-fit: cover;
     box-shadow: 0px 0px 2px 2px var(--lightGray);
-}
-
-.CTA {
-    font-size: 32px;
-    padding: 60px 12px 12px 12px;
 }
 
 /* @media queries */
