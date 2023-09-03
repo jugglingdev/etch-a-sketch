@@ -31,11 +31,30 @@ document.body.onmouseup = () => (mouseDown = false);
 
 // Function for touch events
 
-grid.addEventListener('touchmove', function(e) {
-    let touch = e.touches[0];
-    gridItem = document.elementFromPoint(touch.clientX, touch.clientY);
-    sketch(e);
-})
+let isTouchDevice = 'ontouchstart' in document.documentElement;
+let previousGridItem = null;
+
+grid.addEventListener(isTouchDevice ? 'touchstart' : 'mousedown', function(e) {
+    if (isTouchDevice) {
+        e.preventDefault();  // Prevent scrolling on touch devices
+        previousGridItem = null;  // Reset previousGridItem on touchstart
+    }
+});
+
+grid.addEventListener(isTouchDevice ? 'touchmove' : 'mousemove', function(e) {
+    if (isTouchDevice) {
+        e.preventDefault();  // Prevent scrolling on touch devices
+        let touch = e.touches[0];
+        const currentGridItem = document.elementFromPoint(touch.clientX, touch.clientY);
+
+        if (currentGridItem !== previousGridItem) {
+            sketch(e);
+            previousGridItem = currentGridItem;
+        }
+    } else {
+        sketch(e);
+    }
+});
 
 // Functions to Set Modes (color, rainbow, lighten, darken, eraser)
 
