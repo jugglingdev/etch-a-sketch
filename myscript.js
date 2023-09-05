@@ -31,30 +31,10 @@ document.body.onmouseup = () => (mouseDown = false);
 
 // Function for touch events
 
-let isTouchDevice = 'ontouchstart' in document.documentElement;
-let previousGridItem = null;
-
-grid.addEventListener(isTouchDevice ? 'touchstart' : 'mousedown', function(e) {
-    if (isTouchDevice) {
-        e.preventDefault();  // Prevent scrolling on touch devices
-        previousGridItem = null;  // Reset previousGridItem on touchstart
-    }
-});
-
-grid.addEventListener(isTouchDevice ? 'touchmove' : 'mousemove', function(e) {
-    if (isTouchDevice) {
-        e.preventDefault();  // Prevent scrolling on touch devices
-        let touch = e.touches[0];
-        const currentGridItem = document.elementFromPoint(touch.clientX, touch.clientY);
-
-        if (currentGridItem !== previousGridItem) {
-            sketch(e);
-            previousGridItem = currentGridItem;
-        }
-    } else {
-        sketch(e);
-    }
-});
+function addTouchEvents(gridItem) {
+    gridItem.addEventListener('touchstart', sketch);
+    gridItem.addEventListener('touchmove', sketch);
+}
 
 // Functions to Set Modes (color, rainbow, lighten, darken, eraser)
 
@@ -73,21 +53,49 @@ function setCurrentColor(newColor) {
 
 function sketch(e) {
     if (e.type == 'mouseover' && !mouseDown) return;
+
+    let clientX, clientY;
+
+    if (e.type == 'touchstart' || e.type == 'touchmove') {
+        e.preventDefault();
+        const touch = e.touches[0];
+        clientX = touch.clientX;
+        clientY = touch.clientY;
+    } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+    }
+
+    // Check if the event occurred inside the grid boundaries
+    if (!isInsideGrid(clientX, clientY)) return;
+
+    const element = document.elementFromPoint(clientX, clientY);
+
     if (currentMode == 'color') {
-        e.target.style.backgroundColor = currentColor;
+        element.style.backgroundColor = currentColor;
     } else if (currentMode == 'rainbow') {
         let randomHue = Math.floor(Math.random() * 361);
-        e.target.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
+        element.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
     } else if (currentMode == 'eraser') {
-        e.target.style.backgroundColor = 'rgb(255, 255, 255)';
-    } else if (currentMode == 'lighten' || 'darken') {
-        let gridItemColor = window.getComputedStyle(e.target).backgroundColor;
+        element.style.backgroundColor = 'rgb(255, 255, 255)';
+    } else if (currentMode == 'lighten' || currentMode == 'darken') {
+        let gridItemColor = window.getComputedStyle(element).backgroundColor;
         let gridItemColorRGB = gridItemColor.match(/\d+/g).map(Number);
-        rgbToHsl(e, gridItemColorRGB);
+        rgbToHsl(element, gridItemColorRGB);
     }
 }
 
-function rgbToHsl(e, [r, g, b]) {
+function isInsideGrid(x, y) {
+    const gridRect = grid.getBoundingClientRect();
+    const gridLeft = gridRect.left;
+    const gridRight = gridRect.right;
+    const gridTop = gridRect.top;
+    const gridBottom = gridRect.bottom;
+
+    return x >= gridLeft && x <= gridRight && y >= gridTop && y <= gridBottom;
+}
+
+function rgbToHsl(element, [r, g, b]) {
     r /= 255; g /= 255; b /= 255;
     let max = Math.max(r, g, b);
     let min = Math.min(r, g, b);
@@ -111,21 +119,21 @@ function rgbToHsl(e, [r, g, b]) {
     l *= 100;
 
     if (currentMode == 'lighten') {
-        lightenColor(e, [h, s, l]);
+        lightenColor(element, [h, s, l]);
     } else if (currentMode == 'darken') {
-        darkenColor(e, [h, s, l]);
+        darkenColor(element, [h, s, l]);
     }
     return [h, s, l];
 }
 
-function lightenColor(e, [h, s, l]) {
+function lightenColor(element, [h, s, l]) {
     let newLightness = Math.max(0, Math.min(100, l + 10));
-    e.target.style.backgroundColor = `hsl(${h}, ${s}%, ${newLightness}%)`;
+    element.style.backgroundColor = `hsl(${h}, ${s}%, ${newLightness}%)`;
 }
 
-function darkenColor(e, [h, s, l]) {
+function darkenColor(element, [h, s, l]) {
     let newLightness = Math.max(0, Math.min(100, l - 10));
-    e.target.style.backgroundColor = `hsl(${h}, ${s}%, ${newLightness}%)`;
+    element.style.backgroundColor = `hsl(${h}, ${s}%, ${newLightness}%)`;
 }
 
 // Active Button Functions
@@ -221,6 +229,7 @@ function makeGrid(currentSize) {
         gridItem.classList.add('grid-item');
         gridItem.addEventListener('mousedown', sketch);
         gridItem.addEventListener('mouseover', sketch);
+        addTouchEvents(gridItem);
         grid.appendChild(gridItem);
     };
 
