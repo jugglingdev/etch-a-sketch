@@ -23,8 +23,8 @@ This is a solution to [Project: Etch-A-Sketch of the Foundations Course](https:/
 
 ### Links
 
-- Solution URL: [Project: Rock Paper Scissors solution](https://github.com/jugglingdev/etch-a-sketch)
-- Live Site URL: [Project: Rock Paper Scissors live site](https://jugglingdev.github.io/etch-a-sketch/)
+- Solution URL: [Project: Etch-A-Sketch solution](https://github.com/jugglingdev/etch-a-sketch)
+- Live Site URL: [Project: Etch-A-Sketch live site](https://jugglingdev.github.io/etch-a-sketch/)
 
 ## My process
 
