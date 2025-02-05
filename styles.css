@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+img {
+    display: block;
+    width: 100%;
+}
+
 :root {
     --lightGray: hsl(0, 0%, 80%);
     --darkGray: #333;
@@ -115,8 +120,8 @@ button {
     user-select: none;
 }
 
-button:hover,
-button:focus {
+button:not(.splide__arrow):hover,
+button:not(.splide__arrow):focus {
     transform: scale(1.05);
     cursor: pointer;
 }

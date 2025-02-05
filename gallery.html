@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300&display=swap" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <link href="gallery.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js" defer></script>
+    <script src="gallery.js" defer></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/paintbrush-favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/paintbrush-favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/paintbrush-favicon/favicon-16x16.png" />
+    <link rel="manifest" href="./images/paintbrush-favicon/site.webmanifest" />
+    
+    <title>Etch a Sketch</title>
+</head>
+<body>
+    <header>
+        <h1>Etch A Sketch</h1>
+    </header>
+
+    <section class="splide" id="main-carousel" aria-label="Gallery">
+        <div style="position: relative">
+            <div class="splide__arrows"></div>
+        <div class="splide__track">
+            <ul class="splide__list">
+                <li class="splide__slide">
+                    <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="Abstract painting" />
+                    <div class="slide-description">
+                        <cite>Title</cite>
+                        <q>This is a quote.</q>
+                        <p>- Artist</p>
+                        </div>
+                </li>
+                <li class="splide__slide">
+                    <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="Landscape painting" />
+                    <div class="slide-description">
+                        <cite>Title</cite>
+                        <q>This is a quote.</q>
+                        <p>
+                        - Artist</p>
+                        </div>
+                </li>
+                <li class="splide__slide">
+                    <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="Portrait painting" />
+                    <div class="slide-description">
+                        <cite>Title</cite>
+                        <q>This is a quote.</q>
+                        <p>- Artist</p>
+                        </div>
+                </li>
+            </ul>
+        </div>
+</div>
+<ul id="thumbnails" class="thumbnails">
+    <li class="thumbnail">
+      <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="">
+    </li>
+    <li class="thumbnail">
+      <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="">
+    </li>
+    <li class="thumbnail">
+      <img src="https://placehold.co/600x400/000000/FFFFFF/png" alt="">
+    </li>
+  </ul>
+    </section>
+
+
+    <footer>
+        <p>Thanks for playing!</p>
+        <p>Copyright &copy; 2023 <a href="https://github.com/jugglingdev/" target="_blank">jugglingdev <img src="./images/github-mark/github-mark-white.svg" alt="GitHub social icon"></a></p>
+    </footer>
+    </body>
+    </html>
