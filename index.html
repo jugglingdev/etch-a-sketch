@@ -42,7 +42,11 @@
 
     <footer>
         <p>Thanks for playing!</p>
-        <p>Copyright &copy; 2023 <a href="https://github.com/jugglingdev/" target="_blank">jugglingdev <img src="./images/github-mark/github-mark-white.svg" alt="GitHub social icon"></a></p>
+        <p>Copyright &copy; 
+            <script>
+                const date = new Date();
+                document.write(date.getFullYear());
+            </script> <a href="https://github.com/jugglingdev/" target="_blank">jugglingdev <img class="social-icon" src="./images/github-mark/github-mark-white.svg" alt="GitHub social icon"></a></p>
     </footer>
 </body>
 </html>

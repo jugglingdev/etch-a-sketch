@@ -229,9 +229,10 @@ footer a:visited {
     color: hsl(300, 76%, 73%);
 }
 
-footer img {
+footer .social-icon {
     width: 18px;
     height: 18px;
+    display: inline-block;
 }
 
 @media only screen and (max-width: 425px) {
