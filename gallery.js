@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
 
   try {
-  const json = "/gallery.json";
+  const json = "/gallery.txt";
   const response = await fetch(json);
   const data = await response.json();
   renderGallery(data);
