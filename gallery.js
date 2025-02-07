@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", async function () {
 
   try {
-  const json = "/gallery.txt";
+  const json = "https://jugglingdev.github.io/etch-a-sketch/gallery.json";
   const response = await fetch(json);
   const data = await response.json();
   renderGallery(data);
