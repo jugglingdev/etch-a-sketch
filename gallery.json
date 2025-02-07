@@ -20,6 +20,27 @@
             "description": "It's a mushroom lol",
             "artist": "Aimee C.",
             "imageUrl": "/images/gallery/mushroom.png"
+        },
+        {
+            "id": 1,
+            "title": "Mario",
+            "description": "",
+            "artist": "Chris S.",
+            "imageUrl": "/images/gallery/mario.png"
+        },
+        {
+            "id": 2,
+            "title": "Unicorn",
+            "description": "I found a use for the rainbow function.",
+            "artist": "Chris S.",
+            "imageUrl": "/images/gallery/unicorn.png"
+        },
+        {
+            "id": 3,
+            "title": "Mushroom",
+            "description": "It's a mushroom lol",
+            "artist": "Aimee C.",
+            "imageUrl": "/images/gallery/mushroom.png"
         }
     ]
 }
