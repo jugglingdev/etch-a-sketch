@@ -211,5 +211,4 @@ function makeGrid(currentSize) {
 window.onload = () => {
     makeGrid(currentSize);
     makeButtonActive(currentMode);
-    makeGridLinesBtnActive();
 }

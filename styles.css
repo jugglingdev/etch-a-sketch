@@ -151,17 +151,17 @@ button.active {
     transform: scale(1.0);
 }
 
-.clear:focus,
-.grid-lines:focus {
+#clear:focus,
+#gridLines:focus {
     transform: scale(1.0);
 }
 
-.clear:hover,
-.grid-lines:hover {
+#clear:hover,
+#gridLines:hover {
     transform: scale(1.05);
 }
 
-.clear:active {
+#clear:active {
     box-shadow: none;
     background-color: var(--darkGray);
     color: white;
