@@ -54,6 +54,9 @@ function setCurrentColor(newColor) {
 
 function sketch(e) {
     if (e.type == 'mouseover' && !mouseDown) return;
+
+    saveState();
+
     if (currentMode == 'color') {
         e.target.style.backgroundColor = currentColor;
     } else if (currentMode == 'rainbow') {
@@ -212,3 +215,45 @@ window.onload = () => {
     makeGrid(currentSize);
     makeButtonActive(currentMode);
 }
+
+let undoStack = [];
+let redoStack = [];
+const MAX_HISTORY_SIZE = 100;
+
+function saveState() {
+    if (undoStack.length >= MAX_HISTORY_SIZE) {
+        undoStack.shift();
+    };
+    undoStack.push(grid.innerHTML);
+}
+
+function undo() {
+    if (undoStack.length) {
+        redoStack.push(grid.innerHTML);
+        grid.innerHTML = undoStack.pop();
+        restoreEventListeners();
+    }
+}
+
+function redo() {
+    if (redoStack.length) {
+        undoStack.push(grid.innerHTML);
+        grid.innerHTML = redoStack.pop();
+        restoreEventListeners();
+    }
+}
+
+function restoreEventListeners() {
+    document.querySelectorAll('.grid-item').forEach(gridItem => {
+        gridItem.addEventListener('mousedown', sketch);
+        gridItem.addEventListener('mouseover', sketch);
+    });
+}
+
+document.addEventListener('keydown', (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
+        undo();
+    } else if ((event.ctrlKey || event.metaKey) && event.key === 'y') {
+        redo();
+    }
+});
