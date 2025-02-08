@@ -34,9 +34,19 @@ header {
 
 h1 {
     padding: 40px;
-    text-align: center;
     font-family: 'Lobster', serif;
+    font-size: 36px;
     font-weight: 400;
+    text-align: center;
+}
+
+.etch-a-sketch-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .grid {
@@ -46,6 +56,7 @@ h1 {
     display: grid;
     grid-template-rows: repeat(var(--gridSize), 1fr);
     grid-template-columns: repeat(var(--gridSize), 1fr);
+    width: 80%;
 }
 
 .grid-item {
@@ -100,6 +111,7 @@ input[type='color']:active {
 }
 
 .buttons {
+    width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;
@@ -110,19 +122,24 @@ input[type='color']:active {
 }
 
 button {
+    width: 80%;
     padding: 5px;
+
     font-size: 18px;
-    border-radius: 0.3em;
-    border: none;
-    box-shadow: 0px 1px 3px 1px var(--darkGray);
+    color: var(--darkGray);
     background-color: white;
-    transition: box-shadow 0.25s, background-color 0.25s, color 0.25s;
+    border: none;
+    border-radius: 0.3em;
+    box-shadow: 0px 1px 3px 1px var(--darkGray);
+
+    transition: all 0.15s ease-in;
     user-select: none;
 }
 
 button:not(.splide__arrow):hover,
 button:not(.splide__arrow):focus {
     transform: scale(1.05);
+    transition: all 0.15s ease-out;
     cursor: pointer;
 }
 
@@ -164,15 +181,17 @@ button.active {
 .slider {
     -webkit-appearance: none;
     appearance: none;
-    width: 100%;
+    width: 80%;
     height: 15px;
-    border-radius: 5px;
+    padding-bottom: 0;
+
     background: var(--lightGray);
+    border-radius: 5px;
     outline: none;
     opacity: 0.7;
+
     -webkit-transition: .2s;
     transition: opacity .2s;
-    padding-bottom: 0;
 }
 
 .slider:hover {
@@ -235,42 +254,15 @@ footer .social-icon {
     display: inline-block;
 }
 
-@media only screen and (max-width: 425px) {
-    h1 {
-        font-size: 36px;
-    }
-    
-    .grid {     
-        width: 80%;
-    }
-
-    .buttons {
-        width: 100%
-    }
-
-    button {
-        width: 80%;
-        color: var(--darkGray);
-    }
-
-    .slider-container {
-        width: 100%;
-    }
-
-    .slider {
-        width: 80%;
-    }
-
-    .gridsize {
-        text-align: center;
-    }
-
-}
-
-@media only screen and (min-width: 426px) {
+@media (min-width: 481px) {
     
     h1 {
         font-size: 52px;
+    }
+
+    .etch-a-sketch-wrapper {
+        flex-direction: row;
+        gap: 40px;
     }
     
     .grid {
