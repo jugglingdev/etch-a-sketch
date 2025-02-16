@@ -1,53 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+        />
 
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
-    <script src="index.js" defer></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <link href="styles.css" rel="stylesheet" />
+        <script src="index.js" defer></script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/paintbrush-favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/paintbrush-favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/paintbrush-favicon/favicon-16x16.png">
-    <link rel="manifest" href="./images/paintbrush-favicon/site.webmanifest">
-    
-    <title>Etch a Sketch</title>
-</head>
-<body>
-    <header>
-        <h1>Etch A Sketch</h1>
-    </header>
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./images/paintbrush-favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/paintbrush-favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./images/paintbrush-favicon/favicon-16x16.png"
+        />
+        <link
+            rel="manifest"
+            href="./images/paintbrush-favicon/site.webmanifest"
+        />
 
-    <div class="etch-a-sketch-wrapper">
-    <section id="grid" class="grid">
-    </section>
-    
-    <section class="buttons">
-        <input id="colorPicker" class="color-picker" type='color' value="#333333">
-        <button id="color" class="active">Color Mode</button>
-        <button id="rainbow">Rainbow Mode</button>
-        <button id="lighten">Lighten</button>
-        <button id="darken">Darken</button>
-        <button id="eraser">Eraser</button>
-        <button id="clear">Clear</button>
-        <button id="gridLines">Grid Lines</button>
-        <div class="slider-container">
-            <input type="range" min="1" max="100" value="16" class="slider" id="slider">
-            <div class="gridsize" id="gridSize"></div>
+        <title>Etch a Sketch</title>
+    </head>
+    <body>
+        <header>
+            <h1>Etch A Sketch</h1>
+        </header>
+
+        <div class="etch-a-sketch-wrapper">
+            <section id="grid" class="grid"></section>
+
+            <section class="buttons">
+                <input
+                    id="colorPicker"
+                    class="color-picker"
+                    type="color"
+                    value="#333333"
+                />
+                <button id="color" class="active">Color Mode</button>
+                <button id="rainbow">Rainbow Mode</button>
+                <button id="lighten">Lighten</button>
+                <button id="darken">Darken</button>
+                <button id="eraser">Eraser</button>
+                <button id="clear">Clear</button>
+                <button id="gridLines">Grid Lines</button>
+                <div class="slider-container">
+                    <input
+                        type="range"
+                        min="1"
+                        max="100"
+                        value="16"
+                        class="slider"
+                        id="slider"
+                    />
+                    <div class="gridsize" id="gridSize"></div>
+                </div>
+            </section>
         </div>
-    </section>
-</div>
 
-    <footer>
-        <p>Thanks for playing!</p>
-        <p>Copyright &copy; 
-            <script>
-                const date = new Date();
-                document.write(date.getFullYear());
-            </script> <a href="https://github.com/jugglingdev/" target="_blank">jugglingdev <img class="social-icon" src="./images/github-mark/github-mark-white.svg" alt="GitHub social icon"></a></p>
-    </footer>
-</body>
+        <section class="download"><button id="downloadButton"><img src="/images/download-favicon.png" alt=""> Download Your Sketch</button></section>
+
+        <footer>
+            <p>Thanks for playing!</p>
+            <p>
+                Copyright &copy;
+                <script>
+                    const date = new Date();
+                    document.write(date.getFullYear());
+                </script>
+                <a href="https://github.com/jugglingdev/" target="_blank"
+                    >jugglingdev
+                    <img
+                        class="social-icon"
+                        src="./images/github-mark/github-mark-white.svg"
+                        alt="GitHub social icon"
+                /></a>
+            </p>
+        </footer>
+    </body>
 </html>

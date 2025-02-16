@@ -1,7 +1,7 @@
 const grid = document.getElementById('grid');
 const slider = document.getElementById('slider');
 const gridSize = document.getElementById('gridSize');
-      gridSize.innerHTML = slider.value + ' X ' + slider.value;
+gridSize.innerHTML = slider.value + ' X ' + slider.value;
 
 const colorPicker = document.getElementById('colorPicker');
 const colorMode = document.getElementById('color');
@@ -31,11 +31,11 @@ document.body.onmouseup = () => (mouseDown = false);
 
 // Function for touch events
 
-grid.addEventListener('touchmove', function(e) {
+grid.addEventListener('touchmove', function (e) {
     let touch = e.touches[0];
     gridItem = document.elementFromPoint(touch.clientX, touch.clientY);
     sketch(e);
-})
+});
 
 // Functions to Set Modes (color, rainbow, lighten, darken, eraser)
 
@@ -72,7 +72,9 @@ function sketch(e) {
 }
 
 function rgbToHsl(e, [r, g, b]) {
-    r /= 255; g /= 255; b /= 255;
+    r /= 255;
+    g /= 255;
+    b /= 255;
     let max = Math.max(r, g, b);
     let min = Math.min(r, g, b);
     let d = max - min;
@@ -81,7 +83,7 @@ function rgbToHsl(e, [r, g, b]) {
     if (d === 0) {
         h = 0;
     } else if (max === r) {
-        h = (g - b) / d % 6;
+        h = ((g - b) / d) % 6;
     } else if (max === g) {
         h = (b - r) / d + 2;
     } else if (max === b) {
@@ -159,10 +161,14 @@ function makeButtonActive(newMode) {
 
 function showHideGridLines() {
     if (gridLines.classList.contains('active')) {
-        document.querySelectorAll('.grid-item').forEach(el => el.classList.add('grid-lines'));
+        document
+            .querySelectorAll('.grid-item')
+            .forEach((el) => el.classList.add('grid-lines'));
     } else {
-        document.querySelectorAll('.grid-item').forEach(el => el.classList.remove('grid-lines'));
-    }    
+        document
+            .querySelectorAll('.grid-item')
+            .forEach((el) => el.classList.remove('grid-lines'));
+    }
 }
 
 function makeGridLinesBtnActive() {
@@ -183,7 +189,7 @@ function changeSize(value) {
 function setCurrentSize(newSize) {
     currentSize = newSize;
 }
-  
+
 function updateSizeValue(value) {
     gridSize.innerHTML = `${value} x ${value}`;
 }
@@ -199,14 +205,14 @@ function clearGrid() {
 
 function makeGrid(currentSize) {
     grid.style.setProperty('--gridSize', currentSize);
-    
-    for (let i = 0; i < (currentSize * currentSize); i++) {
+
+    for (let i = 0; i < currentSize * currentSize; i++) {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item');
         gridItem.addEventListener('mousedown', sketch);
         gridItem.addEventListener('mouseover', sketch);
         grid.appendChild(gridItem);
-    };
+    }
 
     showHideGridLines();
 }
@@ -214,7 +220,7 @@ function makeGrid(currentSize) {
 window.onload = () => {
     makeGrid(currentSize);
     makeButtonActive(currentMode);
-}
+};
 
 let undoStack = [];
 let redoStack = [];
@@ -223,7 +229,7 @@ const MAX_HISTORY_SIZE = 100;
 function saveState() {
     if (undoStack.length >= MAX_HISTORY_SIZE) {
         undoStack.shift();
-    };
+    }
     undoStack.push(grid.innerHTML);
 }
 
@@ -244,7 +250,7 @@ function redo() {
 }
 
 function restoreEventListeners() {
-    document.querySelectorAll('.grid-item').forEach(gridItem => {
+    document.querySelectorAll('.grid-item').forEach((gridItem) => {
         gridItem.addEventListener('mousedown', sketch);
         gridItem.addEventListener('mouseover', sketch);
     });
@@ -257,3 +263,39 @@ document.addEventListener('keydown', (event) => {
         redo();
     }
 });
+
+document
+    .getElementById('downloadButton')
+    .addEventListener('click', downloadSketch);
+
+function downloadSketch() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const gridItems = document.querySelectorAll('.grid-item');
+    const gridSize = Math.sqrt(gridItems.length);
+    const gridItemSize = gridItems[0].offsetWidth;
+
+    canvas.width = gridSize * gridItemSize;
+    canvas.height = gridSize * gridItemSize;
+
+    gridItems.forEach((gridItem, index) => {
+        const row = Math.floor(index / gridSize);
+        const column = index % gridSize;
+        const backgroundColor =
+            window.getComputedStyle(gridItem).backgroundColor;
+
+        ctx.fillStyle = backgroundColor;
+        ctx.fillRect(
+            column * gridItemSize,
+            row * gridItemSize,
+            gridItemSize,
+            gridItemSize
+        );
+    });
+
+    const link = document.createElement('a');
+    link.download = 'sketch.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}
