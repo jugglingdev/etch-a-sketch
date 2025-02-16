@@ -3,6 +3,8 @@ const slider = document.getElementById('slider');
 const gridSize = document.getElementById('gridSize');
 gridSize.innerHTML = slider.value + ' X ' + slider.value;
 
+const paintbrush = document.getElementById('paintbrush');
+const paintBucket = document.getElementById('paintBucket');
 const colorPicker = document.getElementById('colorPicker');
 const colorMode = document.getElementById('color');
 const rainbowMode = document.getElementById('rainbow');
@@ -12,6 +14,12 @@ const eraser = document.getElementById('eraser');
 const clear = document.getElementById('clear');
 const gridLines = document.getElementById('gridLines');
 
+paintbrush.onclick = () => {
+    setCurrentMode('color');
+};
+paintBucket.onclick = () => {
+    setCurrentMode('paintBucket');
+};
 colorPicker.oninput = (e) => setCurrentColor(e.target.value);
 colorMode.onclick = () => setCurrentMode('color');
 rainbowMode.onclick = () => setCurrentMode('rainbow');
@@ -41,10 +49,65 @@ grid.addEventListener('touchmove', function (e) {
 
 let currentMode = 'color';
 let currentColor = 'hsl(0, 0%, 20%)';
+let paintBucketActive = false;
 
 function setCurrentMode(newMode) {
     makeButtonActive(newMode);
     currentMode = newMode;
+    paintBucketActive = newMode === 'paintBucket';
+}
+
+function floodFill(startCell, newColor) {
+    let gridItems = Array.from(document.querySelectorAll('.grid-item'));
+    let columns = Math.sqrt(gridItems.length);
+
+    let startColor = window.getComputedStyle(startCell).backgroundColor;
+    if (startColor === newColor) return;
+
+    let queue = [startCell];
+    let visited = new Set();
+    visited.add(startCell);
+
+    function processQueue() {
+        let nextBatch = [];
+        while (queue.length) {
+            let cell = queue.pop();
+            let index = Array.from(gridItems).indexOf(cell);
+
+            cell.style.backgroundColor = newColor;
+
+            // Get neighboring cells (left, right, up, down)
+            let neighbors = [];
+            if (index % columns !== 0) neighbors.push(gridItems[index - 1]);
+            if ((index + 1) % columns !== 0)
+                neighbors.push(gridItems[index + 1]);
+            if (index - columns >= 0)
+                neighbors.push(gridItems[index - columns]);
+            if (index + columns < gridItems.length)
+                neighbors.push(gridItems[index + columns]);
+
+            for (let neighbor of neighbors) {
+                if (
+                    neighbor &&
+                    !visited.has(neighbor) &&
+                    window.getComputedStyle(neighbor).backgroundColor ===
+                        startColor
+                ) {
+                    queue.push(neighbor);
+                    visited.add(neighbor);
+                }
+            }
+        }
+        queue = nextBatch;
+        if (queue.length) {
+            requestAnimationFrame(processQueue);
+        }
+    }
+    requestAnimationFrame(processQueue);
+}
+
+function rgbToString(rgbArray) {
+    return `rgb(${rgbArray.join(', ')})`;
 }
 
 function setCurrentColor(newColor) {
@@ -56,6 +119,11 @@ function sketch(e) {
     if (e.type == 'mouseover' && !mouseDown) return;
 
     saveState();
+
+    if (paintBucketActive) {
+        floodFill(e.target, currentColor);
+        return;
+    }
 
     if (currentMode == 'color') {
         e.target.style.backgroundColor = currentColor;
@@ -118,42 +186,67 @@ function darkenColor(e, [h, s, l]) {
 
 function makeButtonActive(newMode) {
     if (newMode == 'color') {
+        grid.classList.remove('paint-bucket');
+        paintBucket.classList.remove('active');
         rainbowMode.classList.remove('active');
         lighten.classList.remove('active');
         darken.classList.remove('active');
         eraser.classList.remove('active');
     } else if (newMode == 'rainbow') {
+        grid.classList.remove('paint-bucket');
+        paintBucket.classList.remove('active');
         colorMode.classList.remove('active');
         lighten.classList.remove('active');
         darken.classList.remove('active');
         eraser.classList.remove('active');
     } else if (newMode == 'lighten') {
+        grid.classList.remove('paint-bucket');
+        paintBucket.classList.remove('active');
         colorMode.classList.remove('active');
         rainbowMode.classList.remove('active');
         darken.classList.remove('active');
         eraser.classList.remove('active');
     } else if (newMode == 'darken') {
+        grid.classList.remove('paint-bucket');
+        paintBucket.classList.remove('active');
         colorMode.classList.remove('active');
         rainbowMode.classList.remove('active');
         lighten.classList.remove('active');
         eraser.classList.remove('active');
     } else if (newMode == 'eraser') {
+        grid.classList.remove('paint-bucket');
+        paintBucket.classList.remove('active');
         colorMode.classList.remove('active');
         rainbowMode.classList.remove('active');
         lighten.classList.remove('active');
         darken.classList.remove('active');
+    } else if (newMode == 'paintBucket') {
+        paintbrush.classList.remove('active');
+        rainbowMode.classList.remove('active');
+        lighten.classList.remove('active');
+        darken.classList.remove('active');
+        eraser.classList.remove('active');
     }
 
     if (newMode == 'color') {
+        paintbrush.classList.add('active');
         colorMode.classList.add('active');
     } else if (newMode == 'rainbow') {
+        paintbrush.classList.add('active');
         rainbowMode.classList.add('active');
     } else if (newMode == 'lighten') {
+        paintbrush.classList.add('active');
         lighten.classList.add('active');
     } else if (newMode == 'darken') {
+        paintbrush.classList.add('active');
         darken.classList.add('active');
     } else if (newMode == 'eraser') {
+        paintbrush.classList.add('active');
         eraser.classList.add('active');
+    } else if (newMode == 'paintBucket') {
+        grid.classList.add('paint-bucket');
+        paintBucket.classList.add('active');
+        colorMode.classList.add('active');
     }
 }
 
