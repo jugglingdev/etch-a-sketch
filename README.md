@@ -4,16 +4,18 @@ This is a solution to [Project: Etch-A-Sketch of the Foundations Course](https:/
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+- [The Odin Project - Etch-A-Sketch](#the-odin-project---etch-a-sketch)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Continued development](#continued-development)
+    - [Useful resources](#useful-resources)
+  - [Author](#author)
+  - [Acknowledgments](#acknowledgments)
 
 ## Overview
 
@@ -100,5 +102,7 @@ This project revealed to me that I need to develop my understanding of events.  
 ## Acknowledgments
 
 Thank you to [Vahid Kazemi](https://gist.github.com/vahidk) for your contribution to converting color codes in JavaScript.  It came in quite handy for this project.
+
+Thank you to [Debi Alpa Nugraha from Flaticon](https://www.flaticon.com/free-icons/download) for the download icon.
 
 As always, shout out to everyone at The Odin Project for chipping in to make web development education free and accessible for everyone.  Huge thanks to you all!
