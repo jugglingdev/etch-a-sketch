@@ -28,16 +28,29 @@ body {
 
 header {
     width: 100%;
-    background-color: var(--lightGray);
+    background-color: var(--darkGray);
+    background-image: url(./images/header-background-top-left.png), url(./images/header-background-bottom-right.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: top left 20px, bottom right;
+    background-size: 15%, 8%;
     margin-bottom: 40px;
 }
 
 h1 {
-    padding: 40px;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+
     font-family: 'Lobster', serif;
-    font-size: 36px;
+    font-size: 52px;
     font-weight: 400;
     text-align: center;
+
+    background-image: url(./images/header-background.png);
+    background-size: contain;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .etch-a-sketch-wrapper {
@@ -330,7 +343,7 @@ footer .social-icon {
 
 @media (min-width: 769px) {
     h1 {
-        font-size: 52px;
+        font-size: 120px;
     }
 
     .etch-a-sketch-wrapper {
