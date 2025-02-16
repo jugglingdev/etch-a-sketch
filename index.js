@@ -6,6 +6,7 @@ gridSize.innerHTML = slider.value + ' X ' + slider.value;
 const paintbrush = document.getElementById('paintbrush');
 const paintBucket = document.getElementById('paintBucket');
 const colorPicker = document.getElementById('colorPicker');
+const recentColors = document.getElementById('recentColors');
 const colorMode = document.getElementById('color');
 const rainbowMode = document.getElementById('rainbow');
 const lighten = document.getElementById('lighten');
@@ -20,7 +21,9 @@ paintbrush.onclick = () => {
 paintBucket.onclick = () => {
     setCurrentMode('paintBucket');
 };
-colorPicker.oninput = (e) => setCurrentColor(e.target.value);
+colorPicker.oninput = (e) => {
+    setCurrentColor(e.target.value);
+};
 colorMode.onclick = () => setCurrentMode('color');
 rainbowMode.onclick = () => setCurrentMode('rainbow');
 lighten.onclick = () => setCurrentMode('lighten');
@@ -106,12 +109,9 @@ function floodFill(startCell, newColor) {
     requestAnimationFrame(processQueue);
 }
 
-function rgbToString(rgbArray) {
-    return `rgb(${rgbArray.join(', ')})`;
-}
-
 function setCurrentColor(newColor) {
     currentColor = newColor;
+    colorPicker.value = toHex(newColor);
     setCurrentMode('color');
 }
 
@@ -127,6 +127,7 @@ function sketch(e) {
 
     if (currentMode == 'color') {
         e.target.style.backgroundColor = currentColor;
+        handleRecentColors(currentColor);
     } else if (currentMode == 'rainbow') {
         let randomHue = Math.floor(Math.random() * 361);
         e.target.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
@@ -180,6 +181,54 @@ function lightenColor(e, [h, s, l]) {
 function darkenColor(e, [h, s, l]) {
     let newLightness = Math.max(0, Math.min(100, l - 10));
     e.target.style.backgroundColor = `hsl(${h}, ${s}%, ${newLightness}%)`;
+}
+
+// Store recent colors in local storage
+
+let recentColorsArray = JSON.parse(localStorage.getItem('recentColors')) || [];
+
+if (recentColorsArray.length) {
+    updateRecentColors();
+}
+
+function handleRecentColors(color) {
+    let selectedColor = color;
+    recentColorsArray = [
+        selectedColor,
+        ...recentColorsArray.filter((color) => color !== selectedColor),
+    ];
+
+    // Limit recent colors to 12
+    recentColorsArray = recentColorsArray.slice(0, 12);
+
+    updateRecentColors();
+}
+
+function updateRecentColors() {
+    recentColors.innerHTML = '';
+    recentColorsArray.forEach((color) => {
+        let swatch = document.createElement('button');
+        swatch.classList.add('color-swatch');
+        swatch.style.backgroundColor = color;
+        swatch.addEventListener('click', () => {
+            setCurrentColor(color);
+        });
+
+        recentColors.appendChild(swatch);
+    });
+
+    localStorage.setItem('recentColors', JSON.stringify(recentColorsArray));
+}
+
+function toHex(color) {
+    let ctx = document.createElement('canvas').getContext('2d');
+    ctx.fillStyle = color;
+    let computedColor = ctx.fillStyle; // Convert named colors & shorthand hex
+    if (computedColor.startsWith('rgb')) {
+        let rgb = computedColor.match(/\d+/g).map(Number);
+        return `#${rgb.map((c) => c.toString(16).padStart(2, '0')).join('')}`;
+    }
+    return computedColor;
 }
 
 // Active Button Functions
