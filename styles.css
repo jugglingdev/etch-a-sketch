@@ -27,11 +27,13 @@ body {
 }
 
 header {
+    position: relative;
     width: 100%;
     background-color: var(--darkGray);
-    background-image: url(./images/header-background-top-left.png), url(./images/header-background-bottom-right.png);
+    background-image: url(./images/header-background-top-left.png),
+        url(./images/header-background-bottom-right.png);
     background-repeat: no-repeat, no-repeat;
-    background-position: top left 20px, bottom right;
+    background-position: top left, bottom right;
     background-size: 15%, 8%;
     margin-bottom: 40px;
 }
@@ -51,6 +53,14 @@ h1 {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 8px;
+    color: white;
 }
 
 .etch-a-sketch-wrapper {

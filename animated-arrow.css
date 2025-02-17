@@ -1,0 +1,89 @@
+nav:has(.animated-arrow) {
+    overflow: hidden;
+}
+
+.animated-arrow {
+    width: 220px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    color: #fff;
+    font-size: 1.25em;
+    font-style: italic;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.2s;
+}
+
+nav:has(.animated-arrow):hover .animated-arrow {
+    transform: translateX(52px);
+    transition: all 0.2s;
+}
+
+/* text */
+
+.animated-arrow .text {
+    min-width: 152px;
+    margin-right: 20px;
+    text-wrap: nowrap;
+}
+
+/* arrows */
+
+.arrow {
+    display: inline-block;
+    position: relative;
+    width: 1px;
+    margin-right: 40px;
+    transition: all 0.2s;
+}
+
+.arrow .shaft {
+    display: block;
+    height: 1px;
+    background-color: #fff;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.arrow .shaft::before,
+.arrow .shaft::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 1px;
+    background-color: #fff;
+    transition: all 0.5s;
+}
+
+.arrow .shaft::before {
+    transform: rotate(40deg);
+    transform-origin: top right;
+}
+
+.arrow .shaft::after {
+    transform: rotate(-40deg);
+    transform-origin: bottom right;
+}
+
+/* right arrow */
+
+nav:has(.animated-arrow) .arrow.right {
+    opacity: 1;
+    transition: all 0.2s;
+}
+
+nav:has(.animated-arrow):hover .arrow.right {
+    opacity: 0;
+    transition: all 0.2s;
+}
+
+/* left arrow */
+
+.arrow.left .shaft {
+    width: 32px;
+}
