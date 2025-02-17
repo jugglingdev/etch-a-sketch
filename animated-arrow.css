@@ -1,31 +1,37 @@
 nav:has(.animated-arrow) {
+    --arrow-size: 8px;
+    --left-arrow-shaft: 32px;
+    --margin: 12px;
+
     overflow: hidden;
 }
 
 .animated-arrow {
-    width: 220px;
+    margin-left: auto;
+
     display: flex;
     justify-content: flex-end;
     align-items: center;
 
     color: #fff;
-    font-size: 1.25em;
+    font-size: 1em;
     font-style: italic;
     text-decoration: none;
     position: relative;
+    transform: translateX(0);
     transition: all 0.2s;
 }
 
 nav:has(.animated-arrow):hover .animated-arrow {
-    transform: translateX(52px);
+    transform: translateX(calc(var(--margin) + var(--arrow-size)));
     transition: all 0.2s;
 }
 
 /* text */
 
 .animated-arrow .text {
-    min-width: 152px;
-    margin-right: 20px;
+    min-width: fit-content;
+    margin-right: calc(var(--margin) + var(--arrow-size));
     text-wrap: nowrap;
 }
 
@@ -35,7 +41,6 @@ nav:has(.animated-arrow):hover .animated-arrow {
     display: inline-block;
     position: relative;
     width: 1px;
-    margin-right: 40px;
     transition: all 0.2s;
 }
 
@@ -54,7 +59,7 @@ nav:has(.animated-arrow):hover .animated-arrow {
     position: absolute;
     top: 0;
     right: 0;
-    width: 8px;
+    width: var(--arrow-size);
     height: 1px;
     background-color: #fff;
     transition: all 0.5s;
@@ -84,6 +89,17 @@ nav:has(.animated-arrow):hover .arrow.right {
 
 /* left arrow */
 
+.arrow.left {
+    margin-right: calc(var(--margin) + var(--left-arrow-shaft));
+    opacity: 0;
+    transition: all 0.2s;
+}
+
 .arrow.left .shaft {
-    width: 32px;
+    width: var(--left-arrow-shaft);
+}
+
+nav:has(.animated-arrow):hover .arrow.left {
+    opacity: 1;
+    transition: all 0.2s;
 }
