@@ -5,32 +5,32 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: 20px;
-  }
-  
-  .thumbnail {
+}
+
+.thumbnail {
     overflow: hidden;
     list-style: none;
     cursor: pointer;
-  }
-  
-  .thumbnail img {
+}
+
+.thumbnail img {
     width: 100%;
     height: auto;
-  }
+}
 
-  .splide .splide__slide {
-      display: flex;
+.splide .splide__slide {
+    display: flex;
     flex-direction: row;
 
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 
-  margin-top: 20px;
-  margin-bottom: 20px;
-  }
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
-  .splide__slide img {
+.splide__slide img {
     flex: 1 1 200px;
     min-width: 0;
 
@@ -42,25 +42,33 @@
     border-right-color: lighten(#000, 0%);
     border-bottom-color: lighten(#000, 20%);
     border-left-color: lighten(#000, 0%);
-    box-shadow: 2px 2px 4px rgba(0,0,0,.6);
-  }
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
 
-  .splide__slide .slide-description {
+.splide__slide .slide-description {
     flex: 1 1 200px;
     align-self: flex-end;
     padding: 1rem 2rem;
-  }
 
-    .splide__slide .slide-description q {
-        display: block;
-    }
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
 
-    .splide__slide .slide-description p {
-        margin-left: 50px;
-    }
+.splide__slide .slide-description cite {
+    font-size: 2rem;
+}
 
-  .splide .splide__arrow {
+.splide__slide .slide-description q {
+    display: block;
+}
+
+.splide__slide .slide-description p {
+    margin-left: 50px;
+}
+
+.splide .splide__arrow {
     background: transparent;
     border: none;
     box-shadow: none;
-  }
+}
