@@ -1,6 +1,7 @@
 @font-face {
     font-family: 'Crang';
-    src: url('../fonts/crang.ttf') format('truetype');
+    src: url('../fonts/crang.woff') format('woff'),
+        url('../fonts/crang.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
