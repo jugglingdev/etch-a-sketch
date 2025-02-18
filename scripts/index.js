@@ -198,8 +198,8 @@ function handleRecentColors(color) {
         ...recentColorsArray.filter((color) => color !== selectedColor),
     ];
 
-    // Limit recent colors to 12
-    recentColorsArray = recentColorsArray.slice(0, 12);
+    // Limit recent colors to 10
+    recentColorsArray = recentColorsArray.slice(0, 10);
 
     updateRecentColors();
 }
