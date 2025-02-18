@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Crang';
+    src: url('../fonts/crang.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -30,7 +37,7 @@ header {
     position: relative;
     width: 100%;
     margin-bottom: 40px;
-    padding: 8px 16px 32px 16px;
+    padding: 8px 16px 40px 16px;
 
     display: flex;
     flex-direction: column;
@@ -38,8 +45,8 @@ header {
     align-items: center;
 
     background-color: var(--darkGray);
-    background-image: url(./images/header-background-top-left.png),
-        url(./images/header-background-bottom-right.png);
+    background-image: url(../images/header-background-top-left.png),
+        url(../images/header-background-bottom-right.png);
     background-repeat: no-repeat, no-repeat;
     background-position: top left, bottom right;
     background-size: 15%, 8%;
@@ -49,13 +56,13 @@ h1 {
     width: fit-content;
     margin: 0 auto;
 
-    font-family: 'Lobster', serif;
-    font-size: 52px;
+    font-family: 'Crang', 'Lobster', serif;
+    font-size: 32px;
     font-weight: 400;
     text-align: center;
 
-    background-image: url(./images/header-background.png);
-    background-size: contain;
+    background-image: url(../images/header-background.png);
+    background-size: cover;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -84,7 +91,7 @@ nav {
     grid-template-columns: repeat(var(--gridSize), 1fr);
     width: 80%;
 
-    cursor: url(./images/paintbrush-cursor.png) 6 26, auto;
+    cursor: url(../images/paintbrush-cursor.png) 6 26, auto;
 }
 
 .grid-item {
@@ -96,7 +103,7 @@ nav {
 }
 
 .grid.paint-bucket {
-    cursor: url(./images/paint-bucket-cursor.png) 6 26, auto;
+    cursor: url(../images/paint-bucket-cursor.png) 6 26, auto;
 }
 
 .grid-lines {
@@ -357,7 +364,7 @@ footer .social-icon {
 
 @media (min-width: 769px) {
     h1 {
-        font-size: 120px;
+        font-size: 60px;
     }
 
     .etch-a-sketch-wrapper {

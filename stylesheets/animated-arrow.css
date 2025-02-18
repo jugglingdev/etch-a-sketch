@@ -4,6 +4,7 @@ nav:has(.animated-arrow) {
     --margin: 12px;
 
     overflow: hidden;
+    margin-bottom: 8px;
 }
 
 .animated-arrow {
