@@ -22,6 +22,9 @@ function renderGallery(data) {
         const slide = document.createElement('li');
         slide.classList.add('splide__slide');
 
+        const imageWrapper = document.createElement('div');
+        imageWrapper.classList.add('image-wrapper');
+
         const image = document.createElement('img');
         image.src = item.imageUrl;
         image.alt = item.description || '';
@@ -52,7 +55,8 @@ function renderGallery(data) {
             hasContent = true;
         }
 
-        slide.appendChild(image);
+        imageWrapper.appendChild(image);
+        slide.appendChild(imageWrapper);
         if (hasContent) {
             slide.appendChild(description);
         }
