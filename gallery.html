@@ -1,63 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+        />
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet" />
-    <link href="./stylesheets/base.css" rel="stylesheet" />
-    <link href="./stylesheets/layout.css" rel="stylesheet" />
-    <link href="./stylesheets/components.css" rel="stylesheet" />
-    <link href="./stylesheets/gallery.css" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <link href="./stylesheets/base.css" rel="stylesheet" />
+        <link href="./stylesheets/layout.css" rel="stylesheet" />
+        <link href="./stylesheets/components.css" rel="stylesheet" />
+        <link href="./stylesheets/gallery.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js" defer></script>
-    <script src="./scripts/gallery.js" defer></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"
+            defer
+        ></script>
+        <script src="./scripts/gallery.js" defer></script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/paintbrush-favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/paintbrush-favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/paintbrush-favicon/favicon-16x16.png" />
-    <link rel="manifest" href="./images/paintbrush-favicon/site.webmanifest" />
-    
-    <title>Etch a Sketch Gallery</title>
-</head>
-<body>
-    <header>
-        <nav><a href="./index.html" class="animated-arrow">
-            <span class="arrow left">
-                <span class="shaft"></span>
-            </span>
-            <span class="text">Etch A Sketch</span>
-            <span class="arrow right">
-                <span class="shaft"></span>
-            </span>
-        </a></nav>
-        <h1>Gallery</h1>
-    </header>
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="./images/paintbrush-favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="./images/paintbrush-favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="./images/paintbrush-favicon/favicon-16x16.png"
+        />
+        <link
+            rel="manifest"
+            href="./images/paintbrush-favicon/site.webmanifest"
+        />
 
-    <section class="splide" id="main-carousel" aria-label="Gallery">
-        <div style="position: relative">
-            <div class="splide__arrows"></div>
-        <div class="splide__track">
-            <ul class="splide__list">
-               
-            </ul>
-        </div>
-</div>
-<ul id="thumbnails" class="thumbnails">
-   
-  </ul>
-    </section>
+        <title>Etch a Sketch Gallery</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="./index.html" class="animated-arrow">
+                    <span class="arrow left">
+                        <span class="shaft"></span>
+                    </span>
+                    <span class="text">Etch A Sketch</span>
+                    <span class="arrow right">
+                        <span class="shaft"></span>
+                    </span>
+                </a>
+            </nav>
+            <h1>Gallery</h1>
+        </header>
 
+        <main class="splide" id="main-carousel" aria-label="Gallery">
+            <div style="position: relative">
+                <div class="splide__arrows"></div>
+                <div class="splide__track">
+                    <ul class="splide__list"></ul>
+                </div>
+            </div>
+            <ul id="thumbnails" class="thumbnails"></ul>
+        </main>
 
-    <footer>
-        <p>Thanks for playing!</p>
-        <p>Copyright &copy;             <script>
-            const date = new Date();
-            document.write(date.getFullYear());
-        </script> 
-        <a href="https://github.com/jugglingdev/" target="_blank">jugglingdev <img class="social-icon" src="./images/github-mark/github-mark-white.svg" alt="GitHub social icon" /></a></p>
-    </footer>
+        <footer>
+            <p>Thanks for playing!</p>
+            <p>
+                Copyright &copy;
+                <script>
+                    const date = new Date();
+                    document.write(date.getFullYear());
+                </script>
+                <a href="https://github.com/jugglingdev/" target="_blank"
+                    >jugglingdev
+                    <img
+                        class="social-icon"
+                        src="./images/github-mark/github-mark-white.svg"
+                        alt="GitHub social icon"
+                /></a>
+            </p>
+        </footer>
     </body>
-    </html>
+</html>

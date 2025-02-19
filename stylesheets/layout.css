@@ -1,8 +1,8 @@
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
 }
 
 /* Header */
@@ -212,6 +212,12 @@ nav:has(.animated-arrow):hover .arrow.right {
 nav:has(.animated-arrow):hover .arrow.left {
     opacity: 1;
     transition: all 0.2s;
+}
+
+/* Main */
+
+main {
+    flex-grow: 1;
 }
 
 /* Footer */
