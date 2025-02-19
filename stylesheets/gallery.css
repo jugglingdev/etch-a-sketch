@@ -37,7 +37,7 @@
     border-left-color: hsl(0, 0%, 96%);
 }
 
-.splide__slide .slide-description {
+.splide__slide .slide-info {
     flex: 1 1 200px;
     align-self: flex-end;
     padding: 1rem 2rem;
@@ -47,15 +47,15 @@
     gap: 6px;
 }
 
-.splide__slide .slide-description cite {
+.splide__slide .slide-info cite {
     font-size: 2rem;
 }
 
-.splide__slide .slide-description q {
+.splide__slide .slide-info q {
     display: block;
 }
 
-.splide__slide .slide-description p {
+.splide__slide .slide-info p {
     margin-left: 50px;
 }
 
@@ -68,37 +68,37 @@
 /* Thumbnails */
 
 .thumbnails {
-  width: 100%;
-  margin-top: 20px;
-  padding: 0 10%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 20px;
 }
 
 .thumbnail {
-  overflow: hidden;
-  list-style: none;
-  cursor: pointer;
+    overflow: hidden;
+    list-style: none;
+    cursor: pointer;
 }
 
 .thumbnail img {
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--lightGray);
-  transition: all 0.2s;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--lightGray);
+    transition: all 0.2s;
 }
 
 .thumbnail.is-active img {
-  background: #fff;
-  padding: 10px;
-  border-style: solid;
-  border-width: 5px;
-  border-color: #000;
-  border-top-color: hsl(0, 0%, 20%);
-  border-right-color: hsl(0, 0%, 0%);
-  border-bottom-color: hsl(0, 0%, 20%);
-  border-left-color: hsl(0, 0%, 0%);
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  transition: all 0.2s;
+    background: #fff;
+    padding: 10px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #000;
+    border-top-color: hsl(0, 0%, 20%);
+    border-right-color: hsl(0, 0%, 0%);
+    border-bottom-color: hsl(0, 0%, 20%);
+    border-left-color: hsl(0, 0%, 0%);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    transition: all 0.2s;
 }
