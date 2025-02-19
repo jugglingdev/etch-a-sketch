@@ -46,16 +46,12 @@ header {
     align-items: center;
 
     background-color: var(--darkGray);
-    background-image: url(../images/header-background-top-left.png),
-        url(../images/header-background-bottom-right.png);
-    background-repeat: no-repeat, no-repeat;
-    background-position: top left, bottom right;
-    background-size: 15%, 8%;
 }
 
 h1 {
     width: fit-content;
     margin: 0 auto;
+    position: relative;
 
     font-family: 'Crang', sans-serif;
     font-size: 32px;
@@ -66,6 +62,63 @@ h1 {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
+}
+
+h1::before {
+    --blue: hsl(177, 100%, 61%);
+    --yellow: hsl(66, 100%, 61%);
+    --pink: hsl(307, 100%, 60%);
+
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 4px;
+    height: 4px;
+    /* box-shadow: -8px -8px var(--blue); */
+}
+
+h1::after {
+    --blue: hsl(177, 100%, 61%);
+    --yellow: hsl(66, 100%, 61%);
+    --pink: hsl(307, 100%, 60%);
+
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 4px;
+    /* box-shadow: 
+        /* inside the header */
+        0px 60px var(--blue),
+        4px 20px var(--pink),
+        20px 92px var(--yellow),
+        60px 76px var(--pink),
+        84px 28px var(--blue),
+        88px 96px var(--blue), 
+        112px 78px var(--blue), 
+        120px 48px var(--pink),
+        152px 88px var(--yellow),
+        160px 40px var(--blue),
+        184px 28px var(--yellow),
+        188px 84px var(--blue), 
+        
+        /* outside the header */ 
+        40px 124px var(--blue), 
+        56px 112px var(--yellow), 
+        104px 128px var(--pink), 
+        136px 140px var(--blue), 
+        176px 124px var(--yellow),
+        192px 148px var(--pink); */
+}
+
+@media (min-width: 769px) {
+    h1::before,
+    h1::after {
+        width: 8px;
+        height: 8px;
+    }
 }
 
 nav {
