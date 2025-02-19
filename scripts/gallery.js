@@ -100,7 +100,7 @@ function createTextElement(tag, text) {
 function initializeSplide() {
     const splide = new Splide('#main-carousel', SPLIDE_CONFIG);
     const thumbnails = document.getElementsByClassName('thumbnail');
-    let activeThumbnail = null;
+    let currentThumbnail = null;
 
     Array.from(thumbnails).forEach((thumbnail, index) => {
         thumbnail.addEventListener('click', function () {
@@ -109,22 +109,25 @@ function initializeSplide() {
     });
 
     splide.on('mounted move', () =>
-        updateActiveThumbnail(thumbnails, splide.index, activeThumbnail)
+        currentThumbnail = updateActiveThumbnail(thumbnails, splide.index, currentThumbnail)
     );
 
     splide.mount();
 }
 
-function updateActiveThumbnail(thumbnails, index, activeThumbnail) {
+function updateActiveThumbnail(thumbnails, index, currentThumbnail) {
     const newThumbnail = thumbnails[index];
+    console.log(newThumbnail);
 
-    if (newThumbnail) {
-        if (activeThumbnail) activeThumbnail.classList.remove('is-active');
+    if (newThumbnail && newThumbnail !== currentThumbnail) {
+        if (currentThumbnail) currentThumbnail.classList.remove('is-active');
         newThumbnail.classList.add('is-active');
-        activeThumbnail = newThumbnail;
+        console.log(currentThumbnail);
+        currentThumbnail = newThumbnail;
+        console.log(currentThumbnail);
     }
 
-    return newThumbnail;
+    return currentThumbnail;
 }
 
 async function init() {
