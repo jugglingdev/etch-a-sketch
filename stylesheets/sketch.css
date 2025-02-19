@@ -18,7 +18,7 @@
     grid-template-columns: repeat(var(--gridSize), 1fr);
     width: 80%;
 
-    cursor: url(../images/paintbrush-cursor.png) 6 26, auto;
+    cursor: url(../images/icons/paintbrush-favicon/paintbrush-cursor.png) 6 26, auto;
 }
 
 .grid-item {
@@ -32,7 +32,7 @@
 /* Sketch Actions */
 
 .grid.paint-bucket {
-    cursor: url(../images/paint-bucket-cursor.png) 6 26, auto;
+    cursor: url(../images/icons/paint-bucket-cursor.png) 6 26, auto;
 }
 
 .grid-lines {
