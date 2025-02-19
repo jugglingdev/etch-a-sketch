@@ -89,8 +89,9 @@ h1::after {
     right: 0;
     width: 4px;
     height: 4px;
-    /* box-shadow: 
+    /* box-shadow: */
         /* inside the header */
+        /*
         0px 60px var(--blue),
         4px 20px var(--pink),
         20px 92px var(--yellow),
@@ -102,9 +103,10 @@ h1::after {
         152px 88px var(--yellow),
         160px 40px var(--blue),
         184px 28px var(--yellow),
-        188px 84px var(--blue), 
+        188px 84px var(--blue), */
         
         /* outside the header */ 
+        /*
         40px 124px var(--blue), 
         56px 112px var(--yellow), 
         104px 128px var(--pink), 
