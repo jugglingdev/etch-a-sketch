@@ -12,8 +12,10 @@
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
             rel="stylesheet"
         />
-        <link href="./stylesheets/styles.css" rel="stylesheet" />
-        <link href="./stylesheets/animated-arrow.css" rel="stylesheet" />
+        <link href="./stylesheets/base.css" rel="stylesheet" />
+        <link href="./stylesheets/layout.css" rel="stylesheet" />
+        <link href="./stylesheets/components.css" rel="stylesheet" />
+        <link href="./stylesheets/sketch.css" rel="stylesheet" />
         <script src="./scripts/index.js" defer></script>
 
         <link
@@ -42,15 +44,17 @@
     </head>
     <body>
         <header>
-            <nav><a href="./gallery.html" class="animated-arrow">
-                <span class="arrow left">
-                    <span class="shaft"></span>
-                </span>
-                <span class="text">Visit the Gallery</span>
-                <span class="arrow right">
-                    <span class="shaft"></span>
-                </span>
-            </a></nav>
+            <nav>
+                <a href="./gallery.html" class="animated-arrow">
+                    <span class="arrow left">
+                        <span class="shaft"></span>
+                    </span>
+                    <span class="text">Visit the Gallery</span>
+                    <span class="arrow right">
+                        <span class="shaft"></span>
+                    </span>
+                </a>
+            </nav>
             <h1>Etch A Sketch</h1>
         </header>
 
@@ -79,8 +83,7 @@
                         type="color"
                         value="#333333"
                     />
-                    <div id="recentColors" class="recent-colors">
-                    </div>
+                    <div id="recentColors" class="recent-colors"></div>
                 </div>
                 <button id="color" class="active">Color Mode</button>
                 <button id="rainbow">Rainbow Mode</button>

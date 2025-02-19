@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Crang';
+    src: url('../fonts/crang.woff') format('woff'),
+        url('../fonts/crang.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --lightGray: hsl(0, 0%, 80%);
+    --darkGray: #333;
+    --gridSize: 16;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    color: var(--darkGray);
+}

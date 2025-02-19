@@ -1,0 +1,38 @@
+/* Buttons */
+
+button {
+    width: 80%;
+    padding: 5px;
+
+    font-size: 18px;
+    color: var(--darkGray);
+    background-color: white;
+    border: none;
+    border-radius: 0.3em;
+    box-shadow: 0px 1px 3px 1px var(--darkGray);
+
+    transition: all 0.15s ease-in;
+    user-select: none;
+}
+
+button:not(.splide__arrow):hover,
+button:not(.splide__arrow):focus {
+    transform: scale(1.05);
+    transition: all 0.15s ease-out;
+    cursor: pointer;
+}
+
+button.active {
+    box-shadow: none;
+    background-color: var(--darkGray);
+    color: white;
+    outline-offset: 4px; /* for focus state */
+    transform: scale(1);
+}
+
+@media (min-width: 769px) {
+    button {
+        width: 100%;
+        padding: 8px;
+    }
+}
