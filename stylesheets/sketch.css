@@ -18,7 +18,8 @@
     grid-template-columns: repeat(var(--gridSize), 1fr);
     width: 80%;
 
-    cursor: url(../images/icons/paintbrush-favicon/paintbrush-cursor.png) 6 26, auto;
+    cursor: url(../images/icons/paintbrush-cursor.png) 6 26,
+        auto;
 }
 
 .grid-item {
@@ -30,10 +31,6 @@
 }
 
 /* Sketch Actions */
-
-.grid.paint-bucket {
-    cursor: url(../images/icons/paint-bucket-cursor.png) 6 26, auto;
-}
 
 .grid-lines {
     border: 1px solid var(--lightGray);
@@ -157,7 +154,7 @@ button.color-swatch {
     transform: scale(1);
 }
 
-.slider-container {
+.grid-sizer-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -166,7 +163,7 @@ button.color-swatch {
     gap: 10px;
 }
 
-.slider {
+.grid-sizer {
     -webkit-appearance: none;
     appearance: none;
     width: 80%;
@@ -182,11 +179,11 @@ button.color-swatch {
     transition: opacity 0.2s;
 }
 
-.slider:hover {
+.grid-sizer:hover {
     opacity: 1;
 }
 
-.slider::-webkit-slider-thumb {
+.grid-sizer::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -196,7 +193,7 @@ button.color-swatch {
     cursor: pointer;
 }
 
-.slider::-moz-range-thumb {
+.grid-sizer::-moz-range-thumb {
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -204,7 +201,7 @@ button.color-swatch {
     cursor: pointer;
 }
 
-.gridsize {
+.grid-size {
     text-align: center;
 }
 

@@ -1,7 +1,7 @@
 const grid = document.getElementById('grid');
-const slider = document.getElementById('slider');
+const gridSizer = document.getElementById('gridSizer');
 const gridSize = document.getElementById('gridSize');
-gridSize.innerHTML = slider.value + ' X ' + slider.value;
+gridSize.innerHTML = gridSizer.value + ' X ' + gridSizer.value;
 
 const paintbrush = document.getElementById('paintbrush');
 const paintBucket = document.getElementById('paintBucket');
