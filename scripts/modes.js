@@ -78,26 +78,54 @@ export function sketch(e) {
 
     const toolType = tools[currentTool][0]; // 'paintbrush' or 'paintBucket'
     if (toolType === 'paintbrush') {
-        applyPaintbrushMode(e.target, colorMode);
+        switch (colorMode) {
+            case 'color':
+                applyColorMode(e.target);
+                break;
+            case 'rainbow':
+                applyRainbowMode(e.target);
+                break;
+            case 'eraser':
+                applyEraserMode(e.target);
+                break;
+            case 'lighten':
+                applyLightenMode(e.target);
+                break;
+            case 'darken':
+                applyDarkenMode(e.target);
+                break;
+            default:
+                console.warn('Unknown mode:', colorMode);
+        }
     } else if (toolType === 'paintBucket') {
         applyBucketFill(e.target);
     }
 }
 
-function applyPaintbrushMode(target, mode) {
-    if (mode === 'color') {
-        target.style.backgroundColor = currentColor;
-        handleRecentColors(currentColor);
-    } else if (mode === 'rainbow') {
-        let randomHue = Math.floor(Math.random() * 361);
-        target.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
-    } else if (mode === 'eraser') {
-        target.style.backgroundColor = 'rgb(255, 255, 255)';
-    } else if (mode === 'lighten' || mode === 'darken') {
-        let gridItemColor = window.getComputedStyle(target).backgroundColor;
-        let gridItemColorRGB = gridItemColor.match(/\d+/g).map(Number);
-        rgbToHsl(target, gridItemColorRGB, colorMode);
-    }
+function applyColorMode(target) {
+    target.style.backgroundColor = currentColor;
+    handleRecentColors(currentColor);
+}
+
+function applyRainbowMode(target) {
+    let randomHue = Math.floor(Math.random() * 361);
+    target.style.backgroundColor = `hsl(${randomHue}, 100%, 50%)`;
+}
+
+function applyLightenMode(target) {
+    let gridItemColor = window.getComputedStyle(target).backgroundColor;
+    let gridItemColorRGB = gridItemColor.match(/\d+/g).map(Number);
+    rgbToHsl(target, gridItemColorRGB, 'lighten');
+}
+
+function applyDarkenMode(target) {
+    let gridItemColor = window.getComputedStyle(target).backgroundColor;
+    let gridItemColorRGB = gridItemColor.match(/\d+/g).map(Number);
+    rgbToHsl(target, gridItemColorRGB, 'darken');
+}
+
+function applyEraserMode(target) {
+    target.style.backgroundColor = 'rgb(255, 255, 255)';
 }
 
 function applyBucketFill(target) {
