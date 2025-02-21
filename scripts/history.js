@@ -37,9 +37,17 @@ function restoreEventListeners() {
 
 // Keyboard Shortcuts
 document.addEventListener('keydown', (event) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === 'z') {
-        undo();
-    } else if ((event.ctrlKey || event.metaKey) && event.key === 'y') {
+    if (
+        // ctrl + y (Windows) or cmd + shift + z (Mac)
+        (event.ctrlKey && event.key === 'y') ||
+        (event.metaKey && event.shiftKey && event.key === 'z')
+    ) {
         redo();
+    } else if (
+        // ctrl + z (Windows) or cmd + z (Mac)
+        (event.ctrlKey || event.metaKey) &&
+        event.key === 'z'
+    ) {
+        undo();
     }
 });
