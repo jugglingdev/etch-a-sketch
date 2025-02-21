@@ -1,5 +1,6 @@
 import dom from './dom.js';
-import { sketch } from './modes.js';
+import { startSketch } from './modes.js';
+import { saveState } from './history.js';
 
 // Grid Size functions
 let currentGridSize;
@@ -9,13 +10,14 @@ export function createGrid(gridSize) {
     dom.grid.style.setProperty('--gridSize', currentGridSize);
 
     for (let i = 0; i < currentGridSize * currentGridSize; i++) {
-        let cell = document.createElement('div');
-        cell.classList.add('grid-item');
-        cell.addEventListener('mousedown', sketch);
-        cell.addEventListener('mouseover', sketch);
-        dom.grid.appendChild(cell);
+        let gridItem = document.createElement('div');
+        gridItem.classList.add('grid-item');
+        gridItem.addEventListener('mousedown', startSketch);
+        gridItem.addEventListener('mouseover', startSketch);
+        dom.grid.appendChild(gridItem);
     }
 
+    saveState();
     applyGridLines();
 }
 

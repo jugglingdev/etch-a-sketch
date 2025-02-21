@@ -3,6 +3,8 @@ import { handleRecentColors } from './recentColors.js';
 import { floodFill, rgbToHsl } from './utils.js';
 import { saveState } from './history.js';
 
+let mouseDown = false;
+let isDrawing = false;
 let currentTool = 'brush';
 let currentColor = 'hsl(0, 0%, 20%)';
 let colorMode = 'color';
@@ -72,9 +74,33 @@ function makeButtonActive(newMode) {
     }
 }
 
-export function sketch(e) {
-    if (e.type === 'mouseover' && !window.mouseDown) return;
-    saveState();
+export function setMouseDown(boolean) {
+    mouseDown = boolean;
+}
+
+export function startSketch(e) {
+    if (mouseDown) {
+        isDrawing = true;
+    }
+    sketch(e);
+}
+
+dom.body.addEventListener('mouseup', () => {
+    if (isDrawing) {
+        endSketch();
+        isDrawing = false;
+    }
+});
+
+export function endSketch() {
+    if (isDrawing) {
+        saveState();
+    }
+}
+
+function sketch(e) {
+    // Limit sketch() to work with mousedown && mouseover; not hover alone
+    if (e.type === 'mouseover' && !mouseDown) return;
 
     const toolType = tools[currentTool][0]; // 'paintbrush' or 'paintBucket'
     if (toolType === 'paintbrush') {
@@ -131,4 +157,5 @@ function applyEraserMode(target) {
 function applyBucketFill(target) {
     floodFill(target, currentColor);
     handleRecentColors(currentColor);
+    saveState();
 }

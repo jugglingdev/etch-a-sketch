@@ -7,11 +7,11 @@ import {
     toggleGridLines,
 } from './grid.js';
 import { downloadSketch } from './utils.js';
+import { setMouseDown } from './modes.js';
 
 export function setupEventListeners() {
-    // Limit sketch() to work with mousedown && mouseover; not hover alone
-    dom.body.addEventListener('mousedown', () => (window.mouseDown = true));
-    dom.body.addEventListener('mouseup', () => (window.mouseDown = false));
+    dom.body.addEventListener('mousedown', () => setMouseDown(true));
+    dom.body.addEventListener('mouseup', () => setMouseDown(false));
 
     dom.paintbrush.addEventListener('click', () => setCurrentTool('brush'));
     dom.paintBucket.addEventListener('click', () => setCurrentTool('bucket'));
