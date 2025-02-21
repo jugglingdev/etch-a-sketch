@@ -17,9 +17,9 @@ const tools = {
 };
 
 const BRUSH_CURSOR_STYLE =
-    'url(../images/icons/paintbrush-cursor.png) 6 26, auto';
+    'url(https://jugglingdev.github.io/etch-a-sketch/images/icons/paintbrush-cursor.png) 6 26, auto';
 const BUCKET_CURSOR_STYLE =
-    'url(../images/icons/paint-bucket-cursor.png) 6 26, auto';
+    'url(https://jugglingdev.github.io/etch-a-sketch/images/icons/paint-bucket-cursor.png) 6 26, auto';
 
 export function setCurrentTool(tool) {
     currentTool = tool;
