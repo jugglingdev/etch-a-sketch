@@ -1,5 +1,5 @@
 import dom from './dom.js';
-import { startSketch } from './modes.js';
+import { startSketch, setMouseDown } from './modes.js';
 
 let undoStack = [];
 let redoStack = [];
@@ -10,6 +10,7 @@ export function saveState() {
         undoStack.shift();
     }
     undoStack.push(dom.grid.innerHTML);
+    console.log('undoStack after push: ', undoStack);
 }
 
 export function undo() {
@@ -30,8 +31,13 @@ export function redo() {
 
 function restoreEventListeners() {
     document.querySelectorAll('.grid-item').forEach((gridItem) => {
-        gridItem.addEventListener('mousedown', startSketch);
-        gridItem.addEventListener('mouseover', startSketch);
+        gridItem.addEventListener('mousedown', (e) => {
+            setMouseDown(true);
+            startSketch(e);
+        });
+        gridItem.addEventListener('mouseover', (e) => {
+            startSketch(e);
+        });
     });
 }
 

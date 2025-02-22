@@ -86,6 +86,7 @@ export function startSketch(e) {
 }
 
 dom.body.addEventListener('mouseup', () => {
+    console.log('isDrawing: ', isDrawing);
     if (isDrawing) {
         endSketch();
         isDrawing = false;
@@ -157,5 +158,4 @@ function applyEraserMode(target) {
 function applyBucketFill(target) {
     floodFill(target, currentColor);
     handleRecentColors(currentColor);
-    saveState();
 }
