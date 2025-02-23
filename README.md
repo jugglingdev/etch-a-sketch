@@ -101,8 +101,12 @@ This project revealed to me that I need to develop my understanding of events.  
 
 ## Acknowledgments
 
-Thank you to [Vahid Kazemi](https://gist.github.com/vahidk) for your contribution to converting color codes in JavaScript.  It came in quite handy for this project.
+Shout outs to the following font, icon, and code creators:
 
-Thank you to [Debi Alpa Nugraha from Flaticon](https://www.flaticon.com/free-icons/download) for the download icon.
+- Crang font by [Caveras](https://caveras.net/)
+- Download icon by [Debi Alpa Nugraha](https://www.flaticon.com/free-icons/download)
+- Bucket icon by [Those Icons](https://www.flaticon.com/free-icons/bucket)
+- CTA arrow hover effect by [Shawn Looi](https://codepen.io/shawnlooi/pen/eeXmrQ)
+- Converting color codes in JS by [Vahid Kazemi](https://gist.github.com/vahidk)
 
 As always, shout out to everyone at The Odin Project for chipping in to make web development education free and accessible for everyone.  Huge thanks to you all!
