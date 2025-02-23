@@ -6,7 +6,7 @@
 
 .splide .splide__slide {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     justify-content: center;
     align-items: center;
@@ -46,7 +46,7 @@
 
 .splide__slide .slide-info {
     flex: 1 1 200px;
-    align-self: flex-end;
+    align-self: flex-start;
     padding: 1rem 2rem;
 
     display: flex;
@@ -55,7 +55,7 @@
 }
 
 .splide__slide .slide-info cite {
-    font-size: 2rem;
+    font-size: 1.25rem;
 }
 
 .splide__slide .slide-info q {
@@ -70,6 +70,20 @@
     background: transparent;
     border: none;
     box-shadow: none;
+}
+
+@media (min-width: 769px) {
+    .splide .splide__slide {
+        flex-direction: row;
+    }
+
+    .splide__slide .slide-info {
+        align-self: flex-end;
+    }
+
+    .splide__slide .slide-info cite {
+        font-size: 2rem;
+    }
 }
 
 /* Thumbnails */

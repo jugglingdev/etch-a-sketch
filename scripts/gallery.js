@@ -3,14 +3,23 @@ const GALLERY_JSON_URL =
 
 const SPLIDE_CONFIG = {
     type: 'slide',
-    width: '90%',
+    width: '100%',
     perPage: 1,
     perMove: 1,
-    gap: '200px',
-    padding: '10%',
+    gap: 'clamp(20px, -1.429rem + 13.39vw, 80px)',
+    padding: '15%',
     rewind: true,
     pagination: false,
-    arrows: true,
+    arrows: false,
+    mediaQuery: 'min',
+    breakpoints: {
+        769: {
+            width: '90%',
+            arrows: true,
+            padding: '10%',
+            gap: '200px',
+        },
+    },
 };
 
 async function fetchGalleryData() {
@@ -108,8 +117,14 @@ function initializeSplide() {
         });
     });
 
-    splide.on('mounted move', () =>
-        currentThumbnail = updateActiveThumbnail(thumbnails, splide.index, currentThumbnail)
+    splide.on(
+        'mounted move',
+        () =>
+            (currentThumbnail = updateActiveThumbnail(
+                thumbnails,
+                splide.index,
+                currentThumbnail
+            ))
     );
 
     splide.mount();
