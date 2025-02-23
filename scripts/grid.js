@@ -46,7 +46,7 @@ export function toggleGridLines() {
     applyGridLines();
 }
 
-function applyGridLines() {
+export function applyGridLines() {
     if (dom.gridLines.classList.contains('active')) {
         document
             .querySelectorAll('.grid-item')

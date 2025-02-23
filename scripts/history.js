@@ -1,4 +1,5 @@
 import dom from './dom.js';
+import { applyGridLines } from './grid.js';
 import { startSketch, setMouseDown } from './modes.js';
 
 let undoStack = [];
@@ -6,10 +7,23 @@ let redoStack = [];
 const MAX_HISTORY_SIZE = 100;
 
 export function saveState() {
+    // Temporarily remove grid lines before saving state
+    const gridItems = document.querySelectorAll('.grid-item');
+    const gridLinesActive = dom.gridLines.classList.contains('active');
+    if (gridLinesActive) {
+        gridItems.forEach((el) => el.classList.remove('grid-lines'));
+    }
+
+    // Save state without grid lines
     if (undoStack.length >= MAX_HISTORY_SIZE) {
         undoStack.shift();
     }
     undoStack.push(dom.grid.innerHTML);
+
+    // Restore grid lines if they were active
+    if (gridLinesActive) {
+        gridItems.forEach((el) => el.classList.add('grid-lines'));
+    }
 }
 
 export function undo() {
@@ -39,6 +53,8 @@ function restoreEventListeners() {
             startSketch(e);
         });
     });
+
+    applyGridLines();
 }
 
 // Keyboard Shortcuts
