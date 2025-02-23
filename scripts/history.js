@@ -10,11 +10,11 @@ export function saveState() {
         undoStack.shift();
     }
     undoStack.push(dom.grid.innerHTML);
-    console.log('undoStack after push: ', undoStack);
 }
 
 export function undo() {
-    if (undoStack.length > 1) {
+    if (undoStack.length == 1) return;
+    if (undoStack.length > 0) {
         redoStack.push(undoStack.pop());
         dom.grid.innerHTML = undoStack[undoStack.length - 1];
         restoreEventListeners();
@@ -23,8 +23,8 @@ export function undo() {
 
 export function redo() {
     if (redoStack.length) {
-        undoStack.push(dom.grid.innerHTML);
-        dom.grid.innerHTML = redoStack.pop();
+        undoStack.push(redoStack.pop());
+        dom.grid.innerHTML = undoStack[undoStack.length - 1];
         restoreEventListeners();
     }
 }

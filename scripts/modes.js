@@ -86,7 +86,6 @@ export function startSketch(e) {
 }
 
 dom.body.addEventListener('mouseup', () => {
-    console.log('isDrawing: ', isDrawing);
     if (isDrawing) {
         endSketch();
         isDrawing = false;

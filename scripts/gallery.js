@@ -117,14 +117,11 @@ function initializeSplide() {
 
 function updateActiveThumbnail(thumbnails, index, currentThumbnail) {
     const newThumbnail = thumbnails[index];
-    console.log(newThumbnail);
 
     if (newThumbnail && newThumbnail !== currentThumbnail) {
         if (currentThumbnail) currentThumbnail.classList.remove('is-active');
         newThumbnail.classList.add('is-active');
-        console.log(currentThumbnail);
         currentThumbnail = newThumbnail;
-        console.log(currentThumbnail);
     }
 
     return currentThumbnail;
