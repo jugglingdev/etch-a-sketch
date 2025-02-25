@@ -56,6 +56,7 @@
 
 .splide__slide .slide-info cite {
     font-size: 1.25rem;
+    line-height: 1.25;
 }
 
 .splide__slide .slide-info q {
