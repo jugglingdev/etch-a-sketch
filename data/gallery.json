@@ -27,6 +27,111 @@
             "description": "I done. Would add more, but it takes too long lol",
             "artist": "Aimee C.",
             "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/girl-on-swing.png"
+        },
+        {
+            "id": 5,
+            "title": "Cake",
+            "description": "cake 🍰",
+            "artist": "Brionne B.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/cake.png"
+        },
+        {
+            "id": 6,
+            "title": "Palm Tree",
+            "description": "",
+            "artist": "Roberto M.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/palm-tree.png"
+        },
+        {
+            "id": 7,
+            "title": "Cherries",
+            "description": "I tried to make cherries but they just look weird",
+            "artist": "Alayna J.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/cherries.png"
+        },
+        {
+            "id": 8,
+            "title": "Smile",
+            "description": "",
+            "artist": "Alayna J.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/smile.png"
+        },
+        {
+            "id": 9,
+            "title": "Hort",
+            "description": "",
+            "artist": "Savanna L.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/hort.png"
+        },
+        {
+            "id": 10,
+            "title": "Bear",
+            "description": "bear 🐻",
+            "artist": "Brionne B.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/bear.png"
+        },
+        {
+            "id": 11,
+            "title": "Rainbow Fish",
+            "description": "",
+            "artist": "Julia M.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/rainbow-fish.png"
+        },
+        {
+            "id": 12,
+            "title": "Ash Wednesday",
+            "description": "",
+            "artist": "Charles G.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/ash-wednesday.png"
+        },
+        {
+            "id": 13,
+            "title": "Mouse",
+            "description": "",
+            "artist": "McKenna B.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/mouse.png"
+        },
+        {
+            "id": 14,
+            "title": "Axolotl",
+            "description": "",
+            "artist": "Nicole H.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/axolotl.png"
+        },
+        {
+            "id": 15,
+            "title": "Garden Gnome",
+            "description": "",
+            "artist": "Aimee C.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/garden-gnome.png"
+        },
+        {
+            "id": 16,
+            "title": "Bass Pro Shops",
+            "description": "",
+            "artist": "Julia M.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/bass-pro-shops.png"
+        },
+        {
+            "id": 17,
+            "title": "Girl with a Pearl Earring",
+            "description": "",
+            "artist": "Savanna L.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/girl-with-a-pearl-earring.png"
+        },
+        {
+            "id": 18,
+            "title": "Duck",
+            "description": "",
+            "artist": "Gabrielle J.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/duck.png"
+        },
+        {
+            "id": 19,
+            "title": "Cityscape",
+            "description": "Alright, I'm done. I could probably keep going, but it's distracting me too much.",
+            "artist": "Aimee C.",
+            "imageUrl": "https://jugglingdev.github.io/etch-a-sketch/images/gallery/cityscape.png"
         }
     ]
 }
