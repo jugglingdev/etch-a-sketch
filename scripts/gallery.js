@@ -2,7 +2,7 @@ const GALLERY_JSON_URL =
     'https://jugglingdev.github.io/etch-a-sketch/data/gallery.json';
 
 const SPLIDE_CONFIG = {
-    type: 'slide',
+    type: 'fade',
     width: '100%',
     perPage: 1,
     perMove: 1,
